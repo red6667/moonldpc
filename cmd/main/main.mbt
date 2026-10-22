@@ -1,11 +1,25 @@
 ///|
+#cfg(target="js")
+fn argument_prefix_length() -> Int {
+  // Node supplies its executable and script before user arguments.
+  2
+}
+
+///|
+#cfg(not(target="js"))
+fn argument_prefix_length() -> Int {
+  1
+}
+
+///|
 fn main {
   let args = @env.args()
-  if args.length() != 2 {
+  let prefix = argument_prefix_length()
+  if args.length() != prefix + 1 {
     println(
       "MoonLDPC local JSON protocol v1: moon run cmd/main -- '<JSON request>'",
     )
   } else {
-    println(@moonldpc.execute(args[1]))
+    println(@moonldpc.execute(args[prefix]))
   }
 }

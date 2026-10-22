@@ -8,6 +8,11 @@ parser.add_argument("--target", choices=["wasm-gc", "wasm", "js", "native"], def
 args = parser.parse_args()
 for name in ["receiver", "designer", "telemetry", "laboratory"]:
     subprocess.run(["moon", "run", "--target", args.target, "examples/"+name], check=True)
+for extra_args in [[], ["{}", "{}"]]:
+    usage = subprocess.run(["moon", "run", "--target", args.target, "cmd/main", "--"] + extra_args,
+                           stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8", check=True)
+    if not usage.stdout.startswith("MoonLDPC local JSON protocol v1:"):
+        raise SystemExit("CLI must reject missing or extra request arguments")
 code = {"variables": 3, "rows": [[0, 1], [1, 2]]}
 for action, payload, expected in [
     ("analyze", {}, True),
