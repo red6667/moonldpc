@@ -162,6 +162,7 @@ pub fn ParityCheck::analyze(Self) -> GraphReport raise CodeError
 pub fn ParityCheck::bit_flip(Self, Array[Int], iterations? : Int) -> BitFlipReport raise CodeError
 pub fn ParityCheck::check_variables(Self, Int) -> Array[Int] raise CodeError
 pub fn ParityCheck::checks(Self) -> Int
+pub fn ParityCheck::correct_single(Self, Array[Int]) -> SingleErrorReport raise CodeError
 pub fn ParityCheck::decode(Self, Array[Double], DecoderConfig) -> DecodeReport raise CodeError
 pub fn ParityCheck::direct_sum(Self, Self) -> Self raise CodeError
 pub fn ParityCheck::dual(Self) -> Self raise CodeError
@@ -216,6 +217,15 @@ pub struct RecoveryReport {
 pub fn RecoveryReport::to_json(Self) -> Json
 pub fn RecoveryReport::to_repr(Self) -> @debug.Repr
 pub impl ToJson for RecoveryReport
+
+pub struct SingleErrorReport {
+  word : Array[Int]?
+  candidates : Array[Int]
+  syndrome : Array[Int]
+  unchanged : Bool
+} derive(ToJson, @debug.Debug)
+pub fn SingleErrorReport::to_json(Self) -> Json
+pub fn SingleErrorReport::to_repr(Self) -> @debug.Repr
 
 pub struct StoppingReport {
   variables : Array[Int]

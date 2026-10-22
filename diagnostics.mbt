@@ -48,3 +48,55 @@ pub extend StoppingReport with @debug.Debug::{to_repr}
 
 ///|
 pub extend StoppingReport with ToJson::{to_json}
+
+///|
+pub struct SingleErrorReport {
+  word : Array[Int]?
+  candidates : Array[Int]
+  syndrome : Array[Int]
+  unchanged : Bool
+} derive(Debug, ToJson)
+
+///|
+/// Sparse unique one-bit correction. This assumes at most one channel error;
+/// a legal result does not certify the assumption. Ambiguous columns are not guessed.
+pub fn ParityCheck::correct_single(
+  self : ParityCheck,
+  received : Array[Int],
+) -> SingleErrorReport raise CodeError {
+  let syndrome = self.syndrome(received)
+  let active : Array[Int] = []
+  for c, bit in syndrome {
+    if bit == 1 {
+      active.push(c)
+    }
+  }
+  if active.is_empty() {
+    return {
+      word: Some(received.copy()),
+      candidates: [],
+      syndrome,
+      unchanged: true,
+    }
+  }
+  let candidates : Array[Int] = []
+  for v in self.rows[active[0]] {
+    if self.columns[v] == active {
+      candidates.push(v)
+    }
+  }
+  let word = if candidates.length() == 1 {
+    let corrected = received.copy()
+    corrected[candidates[0]] = corrected[candidates[0]] ^ 1
+    Some(corrected)
+  } else {
+    None
+  }
+  { word, candidates, syndrome, unchanged: false, }
+}
+
+///|
+pub extend SingleErrorReport with @debug.Debug::{to_repr}
+
+///|
+pub extend SingleErrorReport with ToJson::{to_json}
