@@ -200,6 +200,7 @@ pub fn RatePlan::new(Int, Array[Int], shortened? : Array[(Int, Int)]) -> Self ra
 pub fn RatePlan::observation_count(Self) -> Int
 pub fn RatePlan::project(Self, Array[Int]) -> Array[Int] raise CodeError
 pub fn RatePlan::punctured_positions(Self) -> Array[Int]
+pub fn RatePlan::restore_bec(Self, Array[Int?]) -> Array[Int?] raise CodeError
 pub fn RatePlan::restore_llr(Self, Array[Double], limit? : Double) -> Array[Double] raise CodeError
 pub fn RatePlan::to_repr(Self) -> @debug.Repr
 

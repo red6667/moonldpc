@@ -19,3 +19,29 @@ test "permutations preserve code membership and observation alignment" {
   rejects(() => @moonldpc.Permutation::new([2]))
   rejects(() => p.apply([1.0]))
 }
+
+///|
+test "rate matching restores erasures and rejects conflicting observations" {
+  let plan = @moonldpc.RatePlan::new(5, [0, 0, 2], shortened=[(4, 1)])
+  assert_eq(plan.restore_bec([None, Some(0), Some(1)]), [
+    Some(0),
+    None,
+    Some(1),
+    None,
+    Some(1),
+  ])
+  assert_eq(plan.restore_bec([None, None, None]), [
+    None,
+    None,
+    None,
+    None,
+    Some(1),
+  ])
+  rejects(() => plan.restore_bec([Some(0), Some(1), None]))
+  rejects(() => plan.restore_bec([Some(2), None, None]))
+  rejects(() => plan.restore_bec([]))
+  let repetition = @moonldpc.repetition_code(5)
+  assert_true(
+    repetition.peel(plan.restore_bec([Some(1), None, Some(1)])).complete,
+  )
+}

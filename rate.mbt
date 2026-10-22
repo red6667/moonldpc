@@ -130,3 +130,38 @@ pub fn RatePlan::accepts(
 
 ///|
 pub extend RatePlan with @debug.Debug::{to_repr}
+
+///|
+/// Restore BEC observations; repeated known observations must agree.
+/// Punctured coordinates remain erased, while shortened coordinates are exact.
+pub fn RatePlan::restore_bec(
+  self : RatePlan,
+  observations : Array[Int?],
+) -> Array[Int?] raise CodeError {
+  if observations.length() != self.transmitted.length() {
+    raise LengthMismatch(self.transmitted.length(), observations.length())
+  }
+  let values : Array[Int?] = Array::make(self.n, None)
+  for i, observation in observations {
+    match observation {
+      None => ()
+      Some(bit) => {
+        if bit != 0 && bit != 1 {
+          raise InvalidBit(i, bit)
+        }
+        let v = self.transmitted[i]
+        match values[v] {
+          Some(previous) =>
+            if previous != bit {
+              raise Inconsistent("conflicting repeated BEC observations")
+            }
+          None => values[v] = Some(bit)
+        }
+      }
+    }
+  }
+  for (v, bit) in self.shortened {
+    values[v] = Some(bit)
+  }
+  values
+}
