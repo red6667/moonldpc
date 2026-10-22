@@ -1,3 +1,5 @@
 _build/
 .mooncakes/
 *.log
+__pycache__/
+*.pyc

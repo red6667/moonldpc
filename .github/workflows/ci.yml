@@ -1,8 +1,11 @@
-name: local-quality-gates
+name: quality-gates
 
 on:
   push:
   pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   checks:
@@ -10,19 +13,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [wasm-gc, wasm, js]
+        target: [wasm-gc, wasm, js, native]
     steps:
       - uses: actions/checkout@v4
-      - name: Install MoonBit toolchain
+        with:
+          fetch-depth: 0
+      - name: Install official stable MoonBit toolchain
         shell: bash
         run: |
           curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
       - run: moon version --all
-      - run: moon info
-      - run: moon fmt
+      - run: moon info && moon fmt
       - run: git diff --exit-code
+      - run: moon fmt --check
       - run: moon check --target ${{ matrix.target }} --deny-warn
       - run: moon test --target ${{ matrix.target }} --deny-warn
       - run: moon build --target ${{ matrix.target }} --deny-warn
       - run: python3 scripts/generate_oracles.py --check
+      - run: python3 scripts/test_audit_history.py
+      - run: python3 scripts/audit_local.py
+      - run: python3 scripts/smoke.py --target ${{ matrix.target }}
