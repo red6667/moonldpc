@@ -8,6 +8,8 @@ import {
 // Values
 pub fn awgn_llr(Array[Double], Double, limit? : Double) -> Array[Double] raise CodeError
 
+pub fn awgn_llr_per_sample(Array[Double], Array[Double], limit? : Double) -> Array[Double] raise CodeError
+
 pub fn bec_llr(Array[Int?], limit? : Double) -> Array[Double] raise CodeError
 
 pub fn bit_distance(Array[Int], Array[Int]) -> Int raise CodeError

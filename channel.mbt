@@ -136,3 +136,25 @@ pub extend ErrorCounts with @debug.Debug::{to_repr}
 
 ///|
 pub extend ErrorCounts with ToJson::{to_json}
+
+///|
+/// Heteroscedastic real AWGN demapping. Each sample has its own noise variance.
+pub fn awgn_llr_per_sample(
+  samples : Array[Double],
+  variances : Array[Double],
+  limit? : Double = 50.0,
+) -> Array[Double] raise CodeError {
+  if samples.length() != variances.length() {
+    raise LengthMismatch(samples.length(), variances.length())
+  }
+  validate_limit(limit)
+  let result : Array[Double] = []
+  for i, sample in samples {
+    let variance = variances[i]
+    if !finite(sample) || !finite(variance) || variance <= 0.0 {
+      raise InvalidNumber("finite sample and positive finite variance")
+    }
+    result.push(clamp(sample / variance * 2.0, limit))
+  }
+  result
+}

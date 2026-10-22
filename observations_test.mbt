@@ -23,3 +23,17 @@ test "stable logistic probability round trip and saturation" {
   rejects(() => @moonldpc.probabilities_to_llr([1.1]))
   rejects(() => @moonldpc.bit_one_probabilities([1.0 / 0.0]))
 }
+
+///|
+test "per sample noise calibration agrees with scalar demapping" {
+  assert_eq(@moonldpc.awgn_llr_per_sample([1.0, -2.0, 1.0], [2.0, 0.5, 0.01]), [
+    1.0, -8.0, 50.0,
+  ])
+  assert_eq(
+    @moonldpc.awgn_llr_per_sample([0.25, -2.0], [0.5, 0.5]),
+    @moonldpc.awgn_llr([0.25, -2.0], 0.5),
+  )
+  rejects(() => @moonldpc.awgn_llr_per_sample([1.0], []))
+  rejects(() => @moonldpc.awgn_llr_per_sample([1.0], [0.0]))
+  rejects(() => @moonldpc.awgn_llr_per_sample([1.0], [0.0 / 0.0]))
+}
