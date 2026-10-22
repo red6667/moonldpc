@@ -99,3 +99,49 @@ test "protocol invalid forms never become successful operations" {
     )
   }
 }
+
+///|
+test "reference and diagnostic protocol actions preserve strict schemas" {
+  let code : Json = { "variables": 3, "rows": [[0, 1], [1, 2]] }
+  let valid : Array[Json] = [
+    {
+      "action": "exact-decode",
+      "code": code,
+      "llr": [1.0, -0.1, 2.0],
+      "limit": 8.0,
+    },
+    { "action": "nearest", "code": code, "word": [1, 0, 1] },
+    { "action": "correct-single", "code": code, "word": [1, 0, 1] },
+    { "action": "stopping", "code": code, "variables": [0, 1, 2] },
+    {
+      "action": "coset-encode",
+      "code": code,
+      "syndrome": [1, 0],
+      "information": [1],
+    },
+  ]
+  for request in valid {
+    assert_true(
+      @json.parse(@moonldpc.execute(request.stringify())) is Object(f) &&
+      f.get("ok") is Some(True),
+    )
+  }
+  let invalid : Array[Json] = [
+    { "action": "exact-decode", "code": code, "llr": [1, 2, 3], "limit": 0 },
+    { "action": "nearest", "code": code, "word": [1, 0, 1], "iterations": 10 },
+    { "action": "correct-single", "code": code, "word": [1, 2, 1] },
+    { "action": "stopping", "code": code, "variables": [0, 0] },
+    {
+      "action": "coset-encode",
+      "code": code,
+      "syndrome": [1],
+      "information": [1],
+    },
+  ]
+  for request in invalid {
+    assert_true(
+      @json.parse(@moonldpc.execute(request.stringify())) is Object(f) &&
+      f.get("ok") is Some(False),
+    )
+  }
+}

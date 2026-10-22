@@ -241,6 +241,50 @@ pub fn process_json(request : Json) -> Json raise CodeError {
       let result = Encoder::new(code).distance_report()
       { "ok": true, "result": result.to_json() }
     }
+    "exact-decode" => {
+      allowed(fields, ["action", "code", "llr", "limit"])
+      let limit = match fields.get("limit") {
+        Some(v) => json_double(v)
+        None => 50.0
+      }
+      let result = Encoder::new(code).decode_exact(
+        json_doubles(required(fields, "llr")),
+        limit~,
+      )
+      { "ok": true, "result": result.to_json() }
+    }
+    "nearest" => {
+      allowed(fields, ["action", "code", "word"])
+      let result = Encoder::new(code).nearest_word(
+        json_ints(required(fields, "word")),
+      )
+      { "ok": true, "result": result.to_json() }
+    }
+    "correct-single" => {
+      allowed(fields, ["action", "code", "word"])
+      let result = code.correct_single(json_ints(required(fields, "word")))
+      { "ok": true, "result": result.to_json() }
+    }
+    "stopping" => {
+      allowed(fields, ["action", "code", "variables"])
+      let result = code.stopping_set_report(
+        json_ints(required(fields, "variables")),
+      )
+      { "ok": true, "result": result.to_json() }
+    }
+    "coset-encode" => {
+      allowed(fields, ["action", "code", "syndrome", "information"])
+      let encoder = CosetEncoder::new(
+        code,
+        json_ints(required(fields, "syndrome")),
+      )
+      let word = encoder.encode(json_ints(required(fields, "information")))
+      {
+        "ok": true,
+        "word": word.to_json(),
+        "syndrome": code.syndrome(word).to_json(),
+      }
+    }
     "alist" => {
       allowed(fields, ["action", "code"])
       { "ok": true, "alist": code.to_alist() }
