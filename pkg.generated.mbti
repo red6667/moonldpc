@@ -157,6 +157,7 @@ pub fn ParityCheck::decode(Self, Array[Double], DecoderConfig) -> DecodeReport r
 pub fn ParityCheck::direct_sum(Self, Self) -> Self raise CodeError
 pub fn ParityCheck::edge_endpoints(Self, Int) -> (Int, Int) raise CodeError
 pub fn ParityCheck::edges(Self) -> Int
+pub fn ParityCheck::from_dense(Array[Array[Int]]) -> Self raise CodeError
 pub fn ParityCheck::girth(Self) -> Int? raise CodeError
 pub fn ParityCheck::is_codeword(Self, Array[Int]) -> Bool raise CodeError
 pub fn ParityCheck::new(Int, Array[Array[Int]]) -> Self raise CodeError
@@ -166,6 +167,7 @@ pub fn ParityCheck::puncture(Self, Array[Int]) -> Self raise CodeError
 pub fn ParityCheck::recover_erasures(Self, Array[Int?]) -> RecoveryReport raise CodeError
 pub fn ParityCheck::syndrome(Self, Array[Int]) -> Array[Int] raise CodeError
 pub fn ParityCheck::to_alist(Self) -> String raise CodeError
+pub fn ParityCheck::to_dense(Self) -> Array[Array[Int]] raise CodeError
 pub fn ParityCheck::to_repr(Self) -> @debug.Repr
 pub fn ParityCheck::variable_checks(Self, Int) -> Array[Int] raise CodeError
 pub fn ParityCheck::variables(Self) -> Int
