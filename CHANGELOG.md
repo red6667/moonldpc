@@ -1,7 +1,13 @@
 # Changelog
 
-## 0.1.0-local (2026-10-21)
+## 0.1.0 (2026-10-22)
 
-- 完成稀疏二进制矩阵、GF(2) 编码、三种软判决译码、BEC peeling 与受限精确擦除恢复。
-- 完成 alist/QC、信道 LLR、rate matching、图分析、JSON 协议和三个可运行示例。
-- 完成本地严格测试；GitHub、MoonCakes、CI、Release 和正式账号绑定仍未进行。
+- 稀疏二进制校验、GF(2) 编码、三种迭代软译码、BEC peeling/精确恢复、alist/QC、图分析和投影码。
+- 增加概率/LLR 校准、逐样本噪声方差、统计合并、dense 互操作、对偶/扩展码、仿射编码、观测置换和 BEC rate restoration。
+- 增加 stopping-set 诊断、唯一单错误综合纠正、小码 nearest 与精确 ML/MAP，对应 JSON 动作。
+- 36 个 MoonBit 测试、独立 Python oracle、四个工作流和覆盖四后端的 CI 配置。具体平台执行结果以 CI 记录为准。
+- 建立真实工程切片 ledger；最初无提交的本地实现仅作为一个基线提交。
+
+## 本地原型 (2026-10-21)
+
+- 在未绑定身份、没有远程仓库的环境完成初始算法、19 个测试和三个示例；该阶段没有发布。

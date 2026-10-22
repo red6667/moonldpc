@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-22",
+  "registry_sha256": "47bd0f7acbbb72b47177b4d7fc73cab21f5e731e5cb2b4c1b3dc571ea1ad5c28",
+  "registry_chars": 754250,
+  "registry_sections": 175,
+  "queries": [
+    {
+      "query": "ldpc",
+      "status": "success",
+      "modules": [],
+      "count": 0
+    },
+    {
+      "query": "belief propagation",
+      "status": "success",
+      "modules": [],
+      "count": 0
+    },
+    {
+      "query": "qc-ldpc",
+      "status": "success",
+      "modules": [],
+      "count": 0
+    },
+    {
+      "query": "decode_llr",
+      "status": "success",
+      "modules": [],
+      "count": 0
+    },
+    {
+      "query": "软判决",
+      "status": "success",
+      "modules": [],
+      "count": 0
+    },
+    {
+      "query": "alist",
+      "status": "success",
+      "modules": [
+        {
+          "name": "q2316367743/open-list",
+          "version": "0.1.0"
+        },
+        {
+          "name": "amistozy/prolog",
+          "version": "0.1.7"
+        },
+        {
+          "name": "FlyCloudC/scheme",
+          "version": "0.7.0"
+        },
+        {
+          "name": "justjoheinz/iso-country",
+          "version": "0.1.3"
+        },
+        {
+          "name": "AlexenderSokolov/moonsplit",
+          "version": "0.3.0"
+        },
+        {
+          "name": "pei0331/moon-wit",
+          "version": "0.1.1"
+        },
+        {
+          "name": "code3055/moon_graph",
+          "version": "0.1.0"
+        },
+        {
+          "name": "SyoujyoujiNaiki/chungshan",
+          "version": "0.2.0"
+        },
+        {
+          "name": "hnlyxiaobing/moonbitmark",
+          "version": "0.5.0"
+        },
+        {
+          "name": "azhzx/qbe",
+          "version": "0.32.0"
+        },
+        {
+          "name": "NerdyLee/newcake_ls",
+          "version": "0.1.1"
+        },
+        {
+          "name": "shiheat/find_max",
+          "version": "0.3.0"
+        },
+        {
+          "name": "moonbitstack/moonast",
+          "version": "0.1.1"
+        },
+        {
+          "name": "bobzhang/openseek",
+          "version": "0.3.2"
+        },
+        {
+          "name": "dowdiness/js_engine",
+          "version": "0.9.0"
+        },
+        {
+          "name": "Metalymph/valkey",
+          "version": "0.5.0"
+        },
+        {
+          "name": "vectie/moonclaw",
+          "version": "0.1.6"
+        },
+        {
+          "name": "mizchi/flaker",
+          "version": "0.3.1"
+        },
+        {
+          "name": "bobzhang/faker",
+          "version": "0.1.0"
+        },
+        {
+          "name": "minie135/moon-audit",
+          "version": "0.5.0-dev"
+        },
+        {
+          "name": "bobzhang/loop_invariants_techniques",
+          "version": "0.18.0"
+        },
+        {
+          "name": "001-Elsa/medseal",
+          "version": "0.6.0"
+        },
+        {
+          "name": "Xpeng/linuxpkg",
+          "version": "0.4.0"
+        },
+        {
+          "name": "walkzzz/moon-geometry",
+          "version": "0.231.0"
+        },
+        {
+          "name": "bobzhang/scrut",
+          "version": "0.1.0"
+        },
+        {
+          "name": "daqing/moon-templ",
+          "version": "0.1.0"
+        },
+        {
+          "name": "PerfectPan/agent-finder",
+          "version": "0.1.2"
+        },
+        {
+          "name": "mizchi/converge",
+          "version": "0.2.0"
+        },
+        {
+          "name": "gmlewis/spin-moonbit-sdk",
+          "version": "0.55.4"
+        },
+        {
+          "name": "riantr/pyroduct",
+          "version": "0.1.32"
+        },
+        {
+          "name": "bobzhang/loop_invariants_geometry",
+          "version": "0.13.2"
+        },
+        {
+          "name": "mizchi/crater-browser-helpers",
+          "version": "0.19.0"
+        },
+        {
+          "name": "bobzhang/sexp",
+          "version": "0.1.4"
+        },
+        {
+          "name": "paveg/molt",
+          "version": "0.1.8"
+        },
+        {
+          "name": "moonbitlang/parser",
+          "version": "0.4.6"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1"
+        },
+        {
+          "name": "mizchi/veri",
+          "version": "0.2.0"
+        },
+        {
+          "name": "Ljh684/opencc",
+          "version": "0.1.1"
+        },
+        {
+          "name": "mizchi/kagura_engine",
+          "version": "0.6.0"
+        },
+        {
+          "name": "vitro/engine",
+          "version": "0.8.0"
+        }
+      ],
+      "count": 40
+    },
+    {
+      "query": "erasure",
+      "status": "success",
+      "modules": [
+        {
+          "name": "oyjh0381/moonerasure",
+          "version": "0.2.0"
+        },
+        {
+          "name": "JJ-ai-nb/moonbit-shard-note",
+          "version": "0.2.1"
+        },
+        {
+          "name": "moonbitstack/moonapi",
+          "version": "0.15.0"
+        },
+        {
+          "name": "XiLaiTL/moobile",
+          "version": "0.6.0"
+        }
+      ],
+      "count": 4
+    }
+  ],
+  "github": {
+    "query": "ldpc language:MoonBit",
+    "total_count": 0,
+    "incomplete_results": false
+  },
+  "note": "Supplement to full same-day source-level review. An invalidly encoded Chinese refresh query is excluded; previous valid semantic checks remain documented."
+}

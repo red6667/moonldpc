@@ -1,0 +1,102 @@
+[
+  {
+    "sha": "29707282417c5269f823d4b1b9887669797269f3",
+    "purpose": "feat: establish MoonLDPC coding and soft-decoding baseline",
+    "verification": "Original baseline: 19 tests; three portable target check/test/build; independent Python oracles; three examples and CLI; privacy scan."
+  },
+  {
+    "sha": "524a8d8e040db88130d1501a66bb182c56b6e03c",
+    "purpose": "feat: add validated hard decisions and bit error metric",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "a69c3bcb86d38258f6377c6782c0e64b22313f21",
+    "purpose": "feat: convert calibrated bit probabilities and LLRs stably",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "e8c1e18a2b98540b26d0e17d17947b63a53ae8af",
+    "purpose": "feat: demap AWGN observations with per-sample variance",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "4e7dc73e67e7cb901084fbacdc3a60d0a4d432a2",
+    "purpose": "feat: merge immutable error statistics across simulation shards",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "71f89962715d155daf32a808f8c46175b2118ff0",
+    "purpose": "feat: provide bounded dense and sparse matrix interchange",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "a0c2023fcfdd062f5bb520c2dfb7812595aaaaa5",
+    "purpose": "feat: construct dual codes with bounded GF2 generators",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "c7b5859990977d7f2e5e9e0752ac9f1a86b5831c",
+    "purpose": "feat: extend binary codes with overall even parity",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "dbdc0d4973b2618211aa1dc456ad1360f45204c7",
+    "purpose": "feat: encode and validate affine syndrome cosets",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "e49fe0dccca9068a97e52a3d5d3f58d01934585f",
+    "purpose": "feat: align codewords and soft observations with owned permutations",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "43136d3fc81ef5ef7e164fc25fe2e5c0e56cdd6e",
+    "purpose": "feat: restore punctured and repeated BEC observations safely",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "dd9b0f8e4ec7ce124c1cd972e090545b10e10eef",
+    "purpose": "feat: diagnose BEC stopping sets and singleton boundaries",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "b52e69db8b4202cbf2831aefae4bb21222999287",
+    "purpose": "feat: correct unique single-bit syndromes without guessing ties",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "bb483727454829313af141c532957391efb47d6f",
+    "purpose": "feat: add bounded nearest-codeword reference decoding",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "d34a35ecaa1f58d5ae4be8d71b192dc7d6d3d9db",
+    "purpose": "feat: compute exact small-code ML decisions and MAP marginals",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "2c9da2709d9ae58b5e2849428044fc3df5d6278c",
+    "purpose": "feat: expose exact decoding and diagnostics through strict JSON actions",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "11946bda90d19473496080bb68cd240bfc7b22b9",
+    "purpose": "test: enforce resource and extreme-channel invariants",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "3669ed98af45fee7f174ae40583b44ac9d88f828",
+    "purpose": "feat: demonstrate calibrated interleaved receiver with exact cross-check",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files."
+  },
+  {
+    "sha": "b8ae9c21cc443a53e2880d21806069f9e3874083",
+    "purpose": "build: verify reviewed engineering history with negative audit tests",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files. Offline Python history audit validation: three positive/negative tests."
+  },
+  {
+    "sha": "bffa95fa4616e664ced0f2147d61f47389b8758d",
+    "purpose": "ci: verify native and portable targets with downstream smoke checks",
+    "verification": "moon info; moon fmt; moon check --deny-warn; moon test --deny-warn passed for this slice. Additional targeted tests and workflows remain in the affected files. Default-target downstream smoke workflow completed; four-target cloud runs must be separately verified after push."
+  }
+]
