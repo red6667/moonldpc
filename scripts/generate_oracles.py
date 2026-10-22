@@ -101,6 +101,27 @@ def generate():
     return '\n'.join(out) + '\n'
 
 
+def compare_fixtures(actual, expected):
+    """Keep structure/integers exact; tolerate libm's last floating-point ulps.
+
+    The MoonBit numeric oracle asserts 1e-9; regeneration is stricter at 1e-12.
+    Windows/Python 3.8 and Linux/Python may print different last binary64 ulps.
+    """
+    import re
+    normalize = lambda s: re.sub(r'\s+', '', s).replace(',)', ')').replace(',]', ']')
+    number = re.compile(r'(?<![A-Za-z_0-9])[-+]?\d+\.\d+(?:[eE][-+]?\d+)?')
+    actual, expected = normalize(actual), normalize(expected)
+    actual_values, expected_values = number.findall(actual), number.findall(expected)
+    if number.sub('<FLOAT>', actual) != number.sub('<FLOAT>', expected):
+        return 'non-floating fixture structure changed'
+    if len(actual_values) != len(expected_values):
+        return 'floating fixture count changed'
+    for index, (a, b) in enumerate(zip(actual_values, expected_values)):
+        if not math.isclose(float(a), float(b), rel_tol=1e-12, abs_tol=1e-12):
+            return 'floating fixture %d drifted: actual=%s expected=%s' % (index, a, b)
+    return None
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--check', action='store_true')
@@ -110,10 +131,9 @@ if __name__ == '__main__':
     # Formatting is allowed to reflow generated MoonBit; the raw fixture is kept
     # separately for reproducibility by comparing normalized non-whitespace tokens.
     if args.check:
-        import re
-        normalize = lambda s: re.sub(r'\s+', '', s).replace(',)', ')').replace(',]', ']')
-        if normalize(path.read_text(encoding='utf-8-sig')) != normalize(content):
-            raise SystemExit('oracle fixture drift: regenerate and review')
+        error = compare_fixtures(path.read_text(encoding='utf-8-sig'), content)
+        if error:
+            raise SystemExit('oracle fixture drift: ' + error)
         print('oracle fixtures verified: 144 iterative cases, 40 kernels, 20 exact marginals')
     else:
         path.write_text(content, encoding='utf-8')

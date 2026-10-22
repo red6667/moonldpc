@@ -31,6 +31,7 @@ jobs:
       - run: moon test --target ${{ matrix.target }} --deny-warn
       - run: moon build --target ${{ matrix.target }} --deny-warn
       - run: python3 scripts/generate_oracles.py --check
+      - run: python3 scripts/test_oracle_reproducibility.py
       - run: python3 scripts/test_audit_history.py
       - run: python3 scripts/audit_local.py
       - run: python3 scripts/smoke.py --target ${{ matrix.target }}
