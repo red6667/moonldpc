@@ -10,9 +10,13 @@ pub fn awgn_llr(Array[Double], Double, limit? : Double) -> Array[Double] raise C
 
 pub fn bec_llr(Array[Int?], limit? : Double) -> Array[Double] raise CodeError
 
+pub fn bit_distance(Array[Int], Array[Int]) -> Int raise CodeError
+
 pub fn bpsk(Array[Int]) -> Array[Double] raise CodeError
 
 pub fn bsc_llr(Array[Int], Double, limit? : Double) -> Array[Double] raise CodeError
+
+pub fn decide(Array[Double]) -> Array[Int] raise CodeError
 
 pub fn execute(String) -> String
 
