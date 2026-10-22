@@ -37,3 +37,20 @@ test "per sample noise calibration agrees with scalar demapping" {
   rejects(() => @moonldpc.awgn_llr_per_sample([1.0], [0.0]))
   rejects(() => @moonldpc.awgn_llr_per_sample([1.0], [0.0 / 0.0]))
 }
+
+///|
+test "immutable shard statistics merge matches serial aggregation" {
+  let empty = @moonldpc.ErrorCounts::new()
+  let first = empty.observe([0, 1], [0, 0], false)
+  let second = empty.observe([1, 1], [1, 1], true)
+  let merged = first.merge(second)
+  assert_eq(merged.to_json(), first.observe([1, 1], [1, 1], true).to_json())
+  assert_eq(merged.nonconvergence_rate(), Some(0.5))
+  assert_eq(empty.nonconvergence_rate(), None)
+  assert_eq(first.merge(empty).to_json(), first.to_json())
+  let mut huge = second
+  for _ in 0..<39 {
+    huge = huge.merge(huge)
+  }
+  rejects(() => huge.merge(huge))
+}

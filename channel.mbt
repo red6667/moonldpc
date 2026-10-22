@@ -158,3 +158,31 @@ pub fn awgn_llr_per_sample(
   }
   result
 }
+
+///|
+/// Merge independent simulation shards without sharing mutable counters.
+pub fn ErrorCounts::merge(
+  self : ErrorCounts,
+  other : ErrorCounts,
+) -> ErrorCounts raise CodeError {
+  if self.frames > 1000000000000L - other.frames ||
+    self.bits > 1000000000000000L - other.bits {
+    raise ResourceLimit("merged error counter capacity")
+  }
+  {
+    frames: self.frames + other.frames,
+    frame_errors: self.frame_errors + other.frame_errors,
+    bits: self.bits + other.bits,
+    bit_errors: self.bit_errors + other.bit_errors,
+    nonconverged: self.nonconverged + other.nonconverged,
+  }
+}
+
+///|
+pub fn ErrorCounts::nonconvergence_rate(self : ErrorCounts) -> Double? {
+  if self.frames == 0L {
+    None
+  } else {
+    Some(self.nonconverged.to_double() / self.frames.to_double())
+  }
+}

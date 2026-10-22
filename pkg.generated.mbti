@@ -125,7 +125,9 @@ pub struct ErrorCounts {
 } derive(ToJson, @debug.Debug)
 pub fn ErrorCounts::bit_error_rate(Self) -> Double?
 pub fn ErrorCounts::frame_error_rate(Self) -> Double?
+pub fn ErrorCounts::merge(Self, Self) -> Self raise CodeError
 pub fn ErrorCounts::new() -> Self
+pub fn ErrorCounts::nonconvergence_rate(Self) -> Double?
 pub fn ErrorCounts::observe(Self, Array[Int], Array[Int], Bool) -> Self raise CodeError
 pub fn ErrorCounts::to_json(Self) -> Json
 pub fn ErrorCounts::to_repr(Self) -> @debug.Repr
