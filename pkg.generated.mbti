@@ -106,6 +106,7 @@ pub fn DistanceReport::to_repr(Self) -> @debug.Repr
 pub struct Encoder {
   // private fields
 } derive(@debug.Debug)
+pub fn Encoder::decode_exact(Self, Array[Double], limit? : Double) -> ExactDecodeReport raise CodeError
 pub fn Encoder::dimension(Self) -> Int
 pub fn Encoder::distance_report(Self) -> DistanceReport raise CodeError
 pub fn Encoder::encode(Self, Array[Int]) -> Array[Int] raise CodeError
@@ -141,6 +142,15 @@ pub fn ErrorCounts::nonconvergence_rate(Self) -> Double?
 pub fn ErrorCounts::observe(Self, Array[Int], Array[Int], Bool) -> Self raise CodeError
 pub fn ErrorCounts::to_json(Self) -> Json
 pub fn ErrorCounts::to_repr(Self) -> @debug.Repr
+
+pub struct ExactDecodeReport {
+  word : Array[Int]
+  posterior_llr : Array[Double]
+  ties : Int
+  examined : Int
+} derive(ToJson, @debug.Debug)
+pub fn ExactDecodeReport::to_json(Self) -> Json
+pub fn ExactDecodeReport::to_repr(Self) -> @debug.Repr
 
 pub struct GraphReport {
   variables : Int
