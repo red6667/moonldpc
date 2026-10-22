@@ -69,6 +69,15 @@ pub struct BitFlipReport {
 pub fn BitFlipReport::to_json(Self) -> Json
 pub fn BitFlipReport::to_repr(Self) -> @debug.Repr
 
+pub struct CosetEncoder {
+  // private fields
+} derive(@debug.Debug)
+pub fn CosetEncoder::dimension(Self) -> Int
+pub fn CosetEncoder::encode(Self, Array[Int]) -> Array[Int] raise CodeError
+pub fn CosetEncoder::extract(Self, Array[Int]) -> Array[Int] raise CodeError
+pub fn CosetEncoder::new(ParityCheck, Array[Int]) -> Self raise CodeError
+pub fn CosetEncoder::to_repr(Self) -> @debug.Repr
+
 pub struct DecodeReport {
   word : Array[Int]
   posterior_llr : Array[Double]

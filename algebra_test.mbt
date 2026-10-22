@@ -59,3 +59,28 @@ test "Hamming overall parity extension has distance four" {
   }
   rejects(() => @moonldpc.ParityCheck::new(65536, [[]]).extend_even_parity())
 }
+
+///|
+test "affine encoding enumerates each Hamming syndrome coset" {
+  let code = @moonldpc.hamming7()
+  for syndrome in 0..<8 {
+    let target = bits(syndrome, 3)
+    let coset = @moonldpc.CosetEncoder::new(code, target)
+    assert_eq(coset.dimension(), 4)
+    target[0] = target[0] ^ 1
+    for mask in 0..<16 {
+      let info = bits(mask, 4)
+      let word = coset.encode(info)
+      assert_eq(code.syndrome(word), bits(syndrome, 3))
+      assert_eq(coset.extract(word), info)
+    }
+  }
+  rejects(() => {
+    @moonldpc.CosetEncoder::new(@moonldpc.ParityCheck::new(2, [[0], [0]]), [
+      0, 1,
+    ])
+  })
+  rejects(() => {
+    @moonldpc.CosetEncoder::new(code, [1, 0, 0]).extract(Array::make(7, 0))
+  })
+}
