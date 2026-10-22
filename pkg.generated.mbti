@@ -12,6 +12,8 @@ pub fn bec_llr(Array[Int?], limit? : Double) -> Array[Double] raise CodeError
 
 pub fn bit_distance(Array[Int], Array[Int]) -> Int raise CodeError
 
+pub fn bit_one_probabilities(Array[Double]) -> Array[Double] raise CodeError
+
 pub fn bpsk(Array[Int]) -> Array[Double] raise CodeError
 
 pub fn bsc_llr(Array[Int], Double, limit? : Double) -> Array[Double] raise CodeError
@@ -25,6 +27,8 @@ pub fn hamming7() -> ParityCheck
 pub fn lift_qc(Array[Array[Int]], Int) -> ParityCheck raise CodeError
 
 pub fn parse_alist(String) -> ParityCheck raise CodeError
+
+pub fn probabilities_to_llr(Array[Double], limit? : Double) -> Array[Double] raise CodeError
 
 pub fn process_json(Json) -> Json raise CodeError
 
