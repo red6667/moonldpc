@@ -112,6 +112,7 @@ pub fn Encoder::encode(Self, Array[Int]) -> Array[Int] raise CodeError
 pub fn Encoder::extract(Self, Array[Int]) -> Array[Int] raise CodeError
 pub fn Encoder::generator(Self) -> Array[Array[Int]] raise CodeError
 pub fn Encoder::information_positions(Self) -> Array[Int]
+pub fn Encoder::nearest_word(Self, Array[Int]) -> NearestReport raise CodeError
 pub fn Encoder::new(ParityCheck) -> Self raise CodeError
 pub fn Encoder::parity_positions(Self) -> Array[Int]
 pub fn Encoder::rank(Self) -> Int
@@ -154,6 +155,15 @@ pub struct GraphReport {
 } derive(ToJson, @debug.Debug)
 pub fn GraphReport::to_json(Self) -> Json
 pub fn GraphReport::to_repr(Self) -> @debug.Repr
+
+pub struct NearestReport {
+  word : Array[Int]?
+  distance : Int
+  ties : Int
+  examined : Int
+} derive(ToJson, @debug.Debug)
+pub fn NearestReport::to_json(Self) -> Json
+pub fn NearestReport::to_repr(Self) -> @debug.Repr
 
 pub struct ParityCheck {
   // private fields
