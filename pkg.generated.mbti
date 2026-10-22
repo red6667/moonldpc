@@ -155,6 +155,7 @@ pub fn ParityCheck::check_variables(Self, Int) -> Array[Int] raise CodeError
 pub fn ParityCheck::checks(Self) -> Int
 pub fn ParityCheck::decode(Self, Array[Double], DecoderConfig) -> DecodeReport raise CodeError
 pub fn ParityCheck::direct_sum(Self, Self) -> Self raise CodeError
+pub fn ParityCheck::dual(Self) -> Self raise CodeError
 pub fn ParityCheck::edge_endpoints(Self, Int) -> (Int, Int) raise CodeError
 pub fn ParityCheck::edges(Self) -> Int
 pub fn ParityCheck::from_dense(Array[Array[Int]]) -> Self raise CodeError

@@ -14,3 +14,28 @@ test "dense interchange round trip validates shape and owns data" {
     @moonldpc.ParityCheck::new(65536, Array::makei(17, fn(_) { [] })).to_dense()
   })
 }
+
+///|
+test "dual orthogonality and bidual membership exhaustively" {
+  let code = @moonldpc.hamming7()
+  let dual = code.dual()
+  assert_eq(@moonldpc.Encoder::new(dual).dimension(), 3)
+  let bidual = dual.dual()
+  for mask in 0..<128 {
+    assert_eq(
+      code.is_codeword(bits(mask, 7)),
+      bidual.is_codeword(bits(mask, 7)),
+    )
+  }
+  for a in @moonldpc.Encoder::new(code).generator() {
+    for b in @moonldpc.Encoder::new(dual).generator() {
+      let mut dot = 0
+      for i in 0..<7 {
+        dot = dot ^ (a[i] & b[i])
+      }
+      assert_eq(dot, 0)
+    }
+  }
+  let zero = @moonldpc.ParityCheck::new(2, [[0], [1]])
+  assert_eq(@moonldpc.Encoder::new(zero.dual()).dimension(), 2)
+}
