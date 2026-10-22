@@ -1,7 +1,7 @@
 ///|
 /// Import a bounded dense binary matrix. All rows must have identical width.
 pub fn ParityCheck::from_dense(
-  matrix : Array[Array[Int]],
+  matrix : Array[Array[Int32]],
 ) -> ParityCheck raise CodeError {
   if matrix.is_empty() {
     raise InvalidDimensions("dense matrix requires rows")
@@ -13,10 +13,10 @@ pub fn ParityCheck::from_dense(
   if matrix.length().to_int64() * n.to_int64() > 1048576L {
     raise ResourceLimit("dense matrix cells")
   }
-  let rows : Array[Array[Int]] = []
+  let rows : Array[Array[Int32]] = []
   for row in matrix {
     ensure_bits(row, n)
-    let indices : Array[Int] = []
+    let indices : Array[Int32] = []
     for i, bit in row {
       if bit == 1 {
         indices.push(i)
@@ -31,7 +31,7 @@ pub fn ParityCheck::from_dense(
 /// Export independent dense rows. Bound the allocation before creating rows.
 pub fn ParityCheck::to_dense(
   self : ParityCheck,
-) -> Array[Array[Int]] raise CodeError {
+) -> Array[Array[Int32]] raise CodeError {
   if self.n.to_int64() * self.checks().to_int64() > 1048576L {
     raise ResourceLimit("dense matrix cells")
   }

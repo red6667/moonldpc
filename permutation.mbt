@@ -1,11 +1,11 @@
 ///|
 /// Owned coordinate permutation: indices[new_index] is the old index.
 pub struct Permutation {
-  priv indices : Array[Int]
+  priv indices : Array[Int32]
 } derive(Debug)
 
 ///|
-pub fn Permutation::new(indices : Array[Int]) -> Permutation raise CodeError {
+pub fn Permutation::new(indices : Array[Int32]) -> Permutation raise CodeError {
   if indices.length() > 65536 {
     raise ResourceLimit("permutation size")
   }

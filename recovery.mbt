@@ -2,12 +2,12 @@
 /// Exact affine erasure analysis. Only bits shared by every completion are marked
 /// recovered; a particular valid completion is separate and is NOT evidence of uniqueness.
 pub struct RecoveryReport {
-  values : Array[Int?]
-  recovered : Int
-  unresolved : Array[Int]
-  ambiguity_dimension : Int
+  values : Array[Int32?]
+  recovered : Int32
+  unresolved : Array[Int32]
+  ambiguity_dimension : Int32
   unique : Bool
-  particular_word : Array[Int]
+  particular_word : Array[Int32]
 } derive(Debug)
 
 ///|
@@ -15,12 +15,12 @@ pub struct RecoveryReport {
 /// peeling, and is limited to 2048 unknowns/checks and one million augmented cells.
 pub fn ParityCheck::recover_erasures(
   self : ParityCheck,
-  observations : Array[Int?],
+  observations : Array[Int32?],
 ) -> RecoveryReport raise CodeError {
   if observations.length() != self.n {
     raise LengthMismatch(self.n, observations.length())
   }
-  let unknown_positions : Array[Int] = []
+  let unknown_positions : Array[Int32] = []
   let unknown_index = Array::make(self.n, -1)
   let particular_word = Array::make(self.n, 0)
   for v, observation in observations {
@@ -57,7 +57,7 @@ pub fn ParityCheck::recover_erasures(
     row[unknown_count] = rhs
     row
   })
-  let pivots : Array[Int] = []
+  let pivots : Array[Int32] = []
   let mut rank = 0
   let mut work = 0L
   for col in 0..<unknown_count {
@@ -117,7 +117,7 @@ pub fn ParityCheck::recover_erasures(
       recovered += 1
     }
   }
-  let unresolved : Array[Int] = []
+  let unresolved : Array[Int32] = []
   for v, value in values {
     if value is None {
       unresolved.push(v)
@@ -140,7 +140,7 @@ pub fn ParityCheck::recover_erasures(
 /// code is represented by one empty check. All-deleted projections are rejected.
 pub fn ParityCheck::puncture(
   self : ParityCheck,
-  removed : Array[Int],
+  removed : Array[Int32],
 ) -> ParityCheck raise CodeError {
   if self.n > 2048 ||
     self.checks() > 2048 ||
@@ -205,9 +205,9 @@ pub fn ParityCheck::puncture(
       break
     }
   }
-  let projected_rows : Array[Array[Int]] = []
+  let projected_rows : Array[Array[Int32]] = []
   for r in rank..<dense.length() {
-    let row : Array[Int] = []
+    let row : Array[Int32] = []
     let mut target = 0
     for v in 0..<self.n {
       if !deleted[v] {
@@ -239,15 +239,15 @@ pub impl ToJson for RecoveryReport with fn to_json(self) {
   let values = self.values.map(fn(value) {
     match value {
       None => Json::null()
-      Some(bit) => bit.to_json()
+      Some(bit) => Json(bit)
     }
   })
   {
-    "values": values.to_json(),
+    "values": Json(values),
     "recovered": self.recovered,
-    "unresolved": self.unresolved.to_json(),
+    "unresolved": Json(self.unresolved),
     "ambiguity_dimension": self.ambiguity_dimension,
     "unique": self.unique,
-    "particular_word": self.particular_word.to_json(),
+    "particular_word": Json(self.particular_word),
   }
 }

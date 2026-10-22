@@ -10,23 +10,23 @@ pub fn awgn_llr(Array[Double], Double, limit? : Double) -> Array[Double] raise C
 
 pub fn awgn_llr_per_sample(Array[Double], Array[Double], limit? : Double) -> Array[Double] raise CodeError
 
-pub fn bec_llr(Array[Int?], limit? : Double) -> Array[Double] raise CodeError
+pub fn bec_llr(Array[Int32?], limit? : Double) -> Array[Double] raise CodeError
 
-pub fn bit_distance(Array[Int], Array[Int]) -> Int raise CodeError
+pub fn bit_distance(Array[Int32], Array[Int32]) -> Int32 raise CodeError
 
 pub fn bit_one_probabilities(Array[Double]) -> Array[Double] raise CodeError
 
-pub fn bpsk(Array[Int]) -> Array[Double] raise CodeError
+pub fn bpsk(Array[Int32]) -> Array[Double] raise CodeError
 
-pub fn bsc_llr(Array[Int], Double, limit? : Double) -> Array[Double] raise CodeError
+pub fn bsc_llr(Array[Int32], Double, limit? : Double) -> Array[Double] raise CodeError
 
-pub fn decide(Array[Double]) -> Array[Int] raise CodeError
+pub fn decide(Array[Double]) -> Array[Int32] raise CodeError
 
 pub fn execute(String) -> String
 
 pub fn hamming7() -> ParityCheck
 
-pub fn lift_qc(Array[Array[Int]], Int) -> ParityCheck raise CodeError
+pub fn lift_qc(Array[Array[Int32]], Int32) -> ParityCheck raise CodeError
 
 pub fn parse_alist(String) -> ParityCheck raise CodeError
 
@@ -34,17 +34,17 @@ pub fn probabilities_to_llr(Array[Double], limit? : Double) -> Array[Double] rai
 
 pub fn process_json(Json) -> Json raise CodeError
 
-pub fn repetition_code(Int) -> ParityCheck raise CodeError
+pub fn repetition_code(Int32) -> ParityCheck raise CodeError
 
 // Errors
 pub suberror CodeError {
   InvalidDimensions(String)
-  InvalidIndex(Int, Int)
-  DuplicateEntry(Int, Int)
-  InvalidBit(Int, Int)
-  LengthMismatch(Int, Int)
+  InvalidIndex(Int32, Int32)
+  DuplicateEntry(Int32, Int32)
+  InvalidBit(Int32, Int32)
+  LengthMismatch(Int32, Int32)
   InvalidNumber(String)
-  InvalidFormat(Int, String)
+  InvalidFormat(Int32, String)
   ResourceLimit(String)
   Inconsistent(String)
 } derive(@debug.Debug)
@@ -61,10 +61,10 @@ pub fn Algorithm::not_equal(Self, Self) -> Bool
 pub fn Algorithm::to_repr(Self) -> @debug.Repr
 
 pub struct BitFlipReport {
-  word : Array[Int]
+  word : Array[Int32]
   converged : Bool
-  iterations : Int
-  syndrome_weights : Array[Int]
+  iterations : Int32
+  syndrome_weights : Array[Int32]
 } derive(ToJson, @debug.Debug)
 pub fn BitFlipReport::to_json(Self) -> Json
 pub fn BitFlipReport::to_repr(Self) -> @debug.Repr
@@ -72,18 +72,18 @@ pub fn BitFlipReport::to_repr(Self) -> @debug.Repr
 pub struct CosetEncoder {
   // private fields
 } derive(@debug.Debug)
-pub fn CosetEncoder::dimension(Self) -> Int
-pub fn CosetEncoder::encode(Self, Array[Int]) -> Array[Int] raise CodeError
-pub fn CosetEncoder::extract(Self, Array[Int]) -> Array[Int] raise CodeError
-pub fn CosetEncoder::new(ParityCheck, Array[Int]) -> Self raise CodeError
+pub fn CosetEncoder::dimension(Self) -> Int32
+pub fn CosetEncoder::encode(Self, Array[Int32]) -> Array[Int32] raise CodeError
+pub fn CosetEncoder::extract(Self, Array[Int32]) -> Array[Int32] raise CodeError
+pub fn CosetEncoder::new(ParityCheck, Array[Int32]) -> Self raise CodeError
 pub fn CosetEncoder::to_repr(Self) -> @debug.Repr
 
 pub struct DecodeReport {
-  word : Array[Int]
+  word : Array[Int32]
   posterior_llr : Array[Double]
   converged : Bool
-  iterations : Int
-  syndrome_weights : Array[Int]
+  iterations : Int32
+  syndrome_weights : Array[Int32]
 } derive(ToJson, @debug.Debug)
 pub fn DecodeReport::to_json(Self) -> Json
 pub fn DecodeReport::to_repr(Self) -> @debug.Repr
@@ -91,14 +91,14 @@ pub fn DecodeReport::to_repr(Self) -> @debug.Repr
 pub struct DecoderConfig {
   // private fields
 } derive(@debug.Debug)
-pub fn DecoderConfig::new(Algorithm, iterations? : Int, normalization? : Double, offset? : Double, llr_limit? : Double) -> Self raise CodeError
+pub fn DecoderConfig::new(Algorithm, iterations? : Int32, normalization? : Double, offset? : Double, llr_limit? : Double) -> Self raise CodeError
 pub fn DecoderConfig::to_repr(Self) -> @debug.Repr
 
 pub struct DistanceReport {
-  dimension : Int
-  examined_nonzero_words : Int
-  minimum_distance : Int?
-  weight_distribution : Array[Int]
+  dimension : Int32
+  examined_nonzero_words : Int32
+  minimum_distance : Int32?
+  weight_distribution : Array[Int32]
 } derive(ToJson, @debug.Debug)
 pub fn DistanceReport::to_json(Self) -> Json
 pub fn DistanceReport::to_repr(Self) -> @debug.Repr
@@ -107,24 +107,24 @@ pub struct Encoder {
   // private fields
 } derive(@debug.Debug)
 pub fn Encoder::decode_exact(Self, Array[Double], limit? : Double) -> ExactDecodeReport raise CodeError
-pub fn Encoder::dimension(Self) -> Int
+pub fn Encoder::dimension(Self) -> Int32
 pub fn Encoder::distance_report(Self) -> DistanceReport raise CodeError
-pub fn Encoder::encode(Self, Array[Int]) -> Array[Int] raise CodeError
-pub fn Encoder::extract(Self, Array[Int]) -> Array[Int] raise CodeError
-pub fn Encoder::generator(Self) -> Array[Array[Int]] raise CodeError
-pub fn Encoder::information_positions(Self) -> Array[Int]
-pub fn Encoder::nearest_word(Self, Array[Int]) -> NearestReport raise CodeError
+pub fn Encoder::encode(Self, Array[Int32]) -> Array[Int32] raise CodeError
+pub fn Encoder::extract(Self, Array[Int32]) -> Array[Int32] raise CodeError
+pub fn Encoder::generator(Self) -> Array[Array[Int32]] raise CodeError
+pub fn Encoder::information_positions(Self) -> Array[Int32]
+pub fn Encoder::nearest_word(Self, Array[Int32]) -> NearestReport raise CodeError
 pub fn Encoder::new(ParityCheck) -> Self raise CodeError
-pub fn Encoder::parity_positions(Self) -> Array[Int]
-pub fn Encoder::rank(Self) -> Int
+pub fn Encoder::parity_positions(Self) -> Array[Int32]
+pub fn Encoder::rank(Self) -> Int32
 pub fn Encoder::rate(Self) -> Double
-pub fn Encoder::solve_syndrome(Self, Array[Int]) -> Array[Int] raise CodeError
+pub fn Encoder::solve_syndrome(Self, Array[Int32]) -> Array[Int32] raise CodeError
 pub fn Encoder::to_repr(Self) -> @debug.Repr
 
 pub struct ErasureReport {
-  values : Array[Int?]
-  recovered : Int
-  unresolved : Array[Int]
+  values : Array[Int32?]
+  recovered : Int32
+  unresolved : Array[Int32]
   complete : Bool
 } derive(@debug.Debug)
 pub fn ErasureReport::to_json(Self) -> Json
@@ -139,38 +139,38 @@ pub fn ErrorCounts::frame_error_rate(Self) -> Double?
 pub fn ErrorCounts::merge(Self, Self) -> Self raise CodeError
 pub fn ErrorCounts::new() -> Self
 pub fn ErrorCounts::nonconvergence_rate(Self) -> Double?
-pub fn ErrorCounts::observe(Self, Array[Int], Array[Int], Bool) -> Self raise CodeError
+pub fn ErrorCounts::observe(Self, Array[Int32], Array[Int32], Bool) -> Self raise CodeError
 pub fn ErrorCounts::to_json(Self) -> Json
 pub fn ErrorCounts::to_repr(Self) -> @debug.Repr
 
 pub struct ExactDecodeReport {
-  word : Array[Int]
+  word : Array[Int32]
   posterior_llr : Array[Double]
-  ties : Int
-  examined : Int
+  ties : Int32
+  examined : Int32
 } derive(ToJson, @debug.Debug)
 pub fn ExactDecodeReport::to_json(Self) -> Json
 pub fn ExactDecodeReport::to_repr(Self) -> @debug.Repr
 
 pub struct GraphReport {
-  variables : Int
-  checks : Int
-  edges : Int
-  isolated_variables : Int
-  empty_checks : Int
-  components : Int
-  variable_degrees : Array[Int]
-  check_degrees : Array[Int]
+  variables : Int32
+  checks : Int32
+  edges : Int32
+  isolated_variables : Int32
+  empty_checks : Int32
+  components : Int32
+  variable_degrees : Array[Int32]
+  check_degrees : Array[Int32]
   four_cycles : Int64
 } derive(ToJson, @debug.Debug)
 pub fn GraphReport::to_json(Self) -> Json
 pub fn GraphReport::to_repr(Self) -> @debug.Repr
 
 pub struct NearestReport {
-  word : Array[Int]?
-  distance : Int
-  ties : Int
-  examined : Int
+  word : Array[Int32]?
+  distance : Int32
+  ties : Int32
+  examined : Int32
 } derive(ToJson, @debug.Debug)
 pub fn NearestReport::to_json(Self) -> Json
 pub fn NearestReport::to_repr(Self) -> @debug.Repr
@@ -179,77 +179,77 @@ pub struct ParityCheck {
   // private fields
 } derive(@debug.Debug)
 pub fn ParityCheck::analyze(Self) -> GraphReport raise CodeError
-pub fn ParityCheck::bit_flip(Self, Array[Int], iterations? : Int) -> BitFlipReport raise CodeError
-pub fn ParityCheck::check_variables(Self, Int) -> Array[Int] raise CodeError
-pub fn ParityCheck::checks(Self) -> Int
-pub fn ParityCheck::correct_single(Self, Array[Int]) -> SingleErrorReport raise CodeError
+pub fn ParityCheck::bit_flip(Self, Array[Int32], iterations? : Int32) -> BitFlipReport raise CodeError
+pub fn ParityCheck::check_variables(Self, Int32) -> Array[Int32] raise CodeError
+pub fn ParityCheck::checks(Self) -> Int32
+pub fn ParityCheck::correct_single(Self, Array[Int32]) -> SingleErrorReport raise CodeError
 pub fn ParityCheck::decode(Self, Array[Double], DecoderConfig) -> DecodeReport raise CodeError
 pub fn ParityCheck::direct_sum(Self, Self) -> Self raise CodeError
 pub fn ParityCheck::dual(Self) -> Self raise CodeError
-pub fn ParityCheck::edge_endpoints(Self, Int) -> (Int, Int) raise CodeError
-pub fn ParityCheck::edges(Self) -> Int
+pub fn ParityCheck::edge_endpoints(Self, Int32) -> (Int32, Int32) raise CodeError
+pub fn ParityCheck::edges(Self) -> Int32
 pub fn ParityCheck::extend_even_parity(Self) -> Self raise CodeError
-pub fn ParityCheck::from_dense(Array[Array[Int]]) -> Self raise CodeError
-pub fn ParityCheck::girth(Self) -> Int? raise CodeError
-pub fn ParityCheck::is_codeword(Self, Array[Int]) -> Bool raise CodeError
-pub fn ParityCheck::new(Int, Array[Array[Int]]) -> Self raise CodeError
-pub fn ParityCheck::peel(Self, Array[Int?]) -> ErasureReport raise CodeError
-pub fn ParityCheck::permute(Self, Array[Int]) -> Self raise CodeError
-pub fn ParityCheck::puncture(Self, Array[Int]) -> Self raise CodeError
-pub fn ParityCheck::recover_erasures(Self, Array[Int?]) -> RecoveryReport raise CodeError
-pub fn ParityCheck::stopping_set_report(Self, Array[Int]) -> StoppingReport raise CodeError
-pub fn ParityCheck::syndrome(Self, Array[Int]) -> Array[Int] raise CodeError
+pub fn ParityCheck::from_dense(Array[Array[Int32]]) -> Self raise CodeError
+pub fn ParityCheck::girth(Self) -> Int32? raise CodeError
+pub fn ParityCheck::is_codeword(Self, Array[Int32]) -> Bool raise CodeError
+pub fn ParityCheck::new(Int32, Array[Array[Int32]]) -> Self raise CodeError
+pub fn ParityCheck::peel(Self, Array[Int32?]) -> ErasureReport raise CodeError
+pub fn ParityCheck::permute(Self, Array[Int32]) -> Self raise CodeError
+pub fn ParityCheck::puncture(Self, Array[Int32]) -> Self raise CodeError
+pub fn ParityCheck::recover_erasures(Self, Array[Int32?]) -> RecoveryReport raise CodeError
+pub fn ParityCheck::stopping_set_report(Self, Array[Int32]) -> StoppingReport raise CodeError
+pub fn ParityCheck::syndrome(Self, Array[Int32]) -> Array[Int32] raise CodeError
 pub fn ParityCheck::to_alist(Self) -> String raise CodeError
-pub fn ParityCheck::to_dense(Self) -> Array[Array[Int]] raise CodeError
+pub fn ParityCheck::to_dense(Self) -> Array[Array[Int32]] raise CodeError
 pub fn ParityCheck::to_repr(Self) -> @debug.Repr
-pub fn ParityCheck::variable_checks(Self, Int) -> Array[Int] raise CodeError
-pub fn ParityCheck::variables(Self) -> Int
+pub fn ParityCheck::variable_checks(Self, Int32) -> Array[Int32] raise CodeError
+pub fn ParityCheck::variables(Self) -> Int32
 
 pub struct Permutation {
   // private fields
 } derive(@debug.Debug)
 pub fn[T] Permutation::apply(Self, Array[T]) -> Array[T] raise CodeError
 pub fn Permutation::inverse(Self) -> Self
-pub fn Permutation::new(Array[Int]) -> Self raise CodeError
+pub fn Permutation::new(Array[Int32]) -> Self raise CodeError
 pub fn Permutation::then(Self, Self) -> Self raise CodeError
 pub fn Permutation::to_repr(Self) -> @debug.Repr
 
 pub struct RatePlan {
   // private fields
 } derive(@debug.Debug)
-pub fn RatePlan::accepts(Self, Array[Int]) -> Bool raise CodeError
-pub fn RatePlan::new(Int, Array[Int], shortened? : Array[(Int, Int)]) -> Self raise CodeError
-pub fn RatePlan::observation_count(Self) -> Int
-pub fn RatePlan::project(Self, Array[Int]) -> Array[Int] raise CodeError
-pub fn RatePlan::punctured_positions(Self) -> Array[Int]
-pub fn RatePlan::restore_bec(Self, Array[Int?]) -> Array[Int?] raise CodeError
+pub fn RatePlan::accepts(Self, Array[Int32]) -> Bool raise CodeError
+pub fn RatePlan::new(Int32, Array[Int32], shortened? : Array[(Int32, Int32)]) -> Self raise CodeError
+pub fn RatePlan::observation_count(Self) -> Int32
+pub fn RatePlan::project(Self, Array[Int32]) -> Array[Int32] raise CodeError
+pub fn RatePlan::punctured_positions(Self) -> Array[Int32]
+pub fn RatePlan::restore_bec(Self, Array[Int32?]) -> Array[Int32?] raise CodeError
 pub fn RatePlan::restore_llr(Self, Array[Double], limit? : Double) -> Array[Double] raise CodeError
 pub fn RatePlan::to_repr(Self) -> @debug.Repr
 
 pub struct RecoveryReport {
-  values : Array[Int?]
-  recovered : Int
-  unresolved : Array[Int]
-  ambiguity_dimension : Int
+  values : Array[Int32?]
+  recovered : Int32
+  unresolved : Array[Int32]
+  ambiguity_dimension : Int32
   unique : Bool
-  particular_word : Array[Int]
+  particular_word : Array[Int32]
 } derive(@debug.Debug)
 pub fn RecoveryReport::to_json(Self) -> Json
 pub fn RecoveryReport::to_repr(Self) -> @debug.Repr
 pub impl ToJson for RecoveryReport
 
 pub struct SingleErrorReport {
-  word : Array[Int]?
-  candidates : Array[Int]
-  syndrome : Array[Int]
+  word : Array[Int32]?
+  candidates : Array[Int32]
+  syndrome : Array[Int32]
   unchanged : Bool
 } derive(ToJson, @debug.Debug)
 pub fn SingleErrorReport::to_json(Self) -> Json
 pub fn SingleErrorReport::to_repr(Self) -> @debug.Repr
 
 pub struct StoppingReport {
-  variables : Array[Int]
-  singleton_checks : Array[Int]
+  variables : Array[Int32]
+  singleton_checks : Array[Int32]
   is_stopping_set : Bool
 } derive(ToJson, @debug.Debug)
 pub fn StoppingReport::to_json(Self) -> Json

@@ -1,6 +1,6 @@
 ///|
 /// Hard decisions use zero -> 0. Nonfinite channel inputs are rejected.
-pub fn decide(llr : Array[Double]) -> Array[Int] raise CodeError {
+pub fn decide(llr : Array[Double]) -> Array[Int32] raise CodeError {
   for value in llr {
     if !finite(value) {
       raise InvalidNumber("nonfinite decision LLR")
@@ -12,9 +12,9 @@ pub fn decide(llr : Array[Double]) -> Array[Int] raise CodeError {
 ///|
 /// Hamming distance with strict binary and length validation.
 pub fn bit_distance(
-  left : Array[Int],
-  right : Array[Int],
-) -> Int raise CodeError {
+  left : Array[Int32],
+  right : Array[Int32],
+) -> Int32 raise CodeError {
   ensure_bits(left, left.length())
   ensure_bits(right, left.length())
   let mut distance = 0
@@ -46,7 +46,7 @@ pub fn bit_one_probabilities(
 /// Probabilities of bit one become log(P0/P1). Endpoints saturate at limit.
 pub fn probabilities_to_llr(
   probabilities : Array[Double],
-  limit? : Double = 50.0,
+  limit~ : Double = 50.0,
 ) -> Array[Double] raise CodeError {
   validate_limit(limit)
   let result : Array[Double] = []

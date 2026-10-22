@@ -1,6 +1,6 @@
 ///|
 /// BPSK mapping: 0 -> +1, 1 -> -1.
-pub fn bpsk(word : Array[Int]) -> Array[Double] raise CodeError {
+pub fn bpsk(word : Array[Int32]) -> Array[Double] raise CodeError {
   ensure_bits(word, word.length())
   word.map(fn(bit) { if bit == 0 { 1.0 } else { -1.0 } })
 }
@@ -11,7 +11,7 @@ pub fn bpsk(word : Array[Int]) -> Array[Double] raise CodeError {
 pub fn awgn_llr(
   samples : Array[Double],
   variance : Double,
-  limit? : Double = 50.0,
+  limit~ : Double = 50.0,
 ) -> Array[Double] raise CodeError {
   if !finite(variance) || variance <= 0.0 {
     raise InvalidNumber("positive finite noise variance")
@@ -38,9 +38,9 @@ fn validate_limit(limit : Double) -> Unit raise CodeError {
 ///|
 /// BSC crossover probability must lie strictly between zero and one half.
 pub fn bsc_llr(
-  received : Array[Int],
+  received : Array[Int32],
   crossover : Double,
-  limit? : Double = 50.0,
+  limit~ : Double = 50.0,
 ) -> Array[Double] raise CodeError {
   ensure_bits(received, received.length())
   if !finite(crossover) || crossover <= 0.0 || crossover >= 0.5 {
@@ -54,8 +54,8 @@ pub fn bsc_llr(
 ///|
 /// BEC -> soft observations; an erasure has exactly zero LLR.
 pub fn bec_llr(
-  observations : Array[Int?],
-  limit? : Double = 50.0,
+  observations : Array[Int32?],
+  limit~ : Double = 50.0,
 ) -> Array[Double] raise CodeError {
   validate_limit(limit)
   let result : Array[Double] = []
@@ -88,8 +88,8 @@ pub fn ErrorCounts::new() -> ErrorCounts {
 /// Pure aggregation: each result is a new value, no aliasing or partial mutation on error.
 pub fn ErrorCounts::observe(
   self : ErrorCounts,
-  transmitted : Array[Int],
-  decoded : Array[Int],
+  transmitted : Array[Int32],
+  decoded : Array[Int32],
   converged : Bool,
 ) -> ErrorCounts raise CodeError {
   ensure_bits(transmitted, transmitted.length())
@@ -142,7 +142,7 @@ pub extend ErrorCounts with ToJson::{to_json}
 pub fn awgn_llr_per_sample(
   samples : Array[Double],
   variances : Array[Double],
-  limit? : Double = 50.0,
+  limit~ : Double = 50.0,
 ) -> Array[Double] raise CodeError {
   if samples.length() != variances.length() {
     raise LengthMismatch(samples.length(), variances.length())

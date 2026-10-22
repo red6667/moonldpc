@@ -10,7 +10,7 @@ MoonLDPC 是 MoonBit 二进制稀疏校验矩阵、GF(2) 编码、软判决译�
 moon add red6667/moonldpc@0.1.0
 ```
 
-在消费者 `moon.pkg` 中添加 `import { "red6667/moonldpc" }`。本仓库本地使用 Moon 0.1.20260920、Moonc 0.10.14；CI 使用官方稳定工具链并记录实际版本。支持 wasm-gc、wasm、js 和 native；Windows 本地未安装 C 编译器，native 的 build/test/run 须看云端证据。
+在消费者 `moon.pkg` 中添加 `import { "red6667/moonldpc" }`。本仓库本地使用 Moon 0.1.20261021、Moonc 0.10.17；CI 使用官方稳定工具链并记录实际版本。支持 wasm-gc、wasm、js 和 native；Windows 本地未安装 C 编译器，native 的 build/test/run 须看云端证据。
 
 [源码与版本](https://github.com/red6667/moonldpc) · [真实 CI 记录](https://github.com/red6667/moonldpc/actions) · [MoonCakes 文档](https://mooncakes.io/docs/red6667/moonldpc)
 

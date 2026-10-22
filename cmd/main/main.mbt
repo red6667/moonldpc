@@ -1,13 +1,13 @@
 ///|
 #cfg(target="js")
-fn argument_prefix_length() -> Int {
+fn argument_prefix_length() -> Int32 {
   // Node supplies its executable and script before user arguments.
   2
 }
 
 ///|
 #cfg(not(target="js"))
-fn argument_prefix_length() -> Int {
+fn argument_prefix_length() -> Int32 {
   1
 }
 

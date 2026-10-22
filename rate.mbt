@@ -2,16 +2,16 @@
 /// Explicit coordinate map. Unlisted coordinates are punctured (zero LLR).
 /// Repeated transmitted coordinates are independent observations combined by LLR sum.
 pub struct RatePlan {
-  priv n : Int
-  priv transmitted : Array[Int]
-  priv shortened : Array[(Int, Int)]
+  priv n : Int32
+  priv transmitted : Array[Int32]
+  priv shortened : Array[(Int32, Int32)]
 } derive(Debug)
 
 ///|
 pub fn RatePlan::new(
-  variables : Int,
-  transmitted : Array[Int],
-  shortened? : Array[(Int, Int)] = [],
+  variables : Int32,
+  transmitted : Array[Int32],
+  shortened~ : Array[(Int32, Int32)] = [],
 ) -> RatePlan raise CodeError {
   if variables <= 0 || variables > 65536 {
     raise InvalidDimensions("rate-plan variables")
@@ -48,12 +48,12 @@ pub fn RatePlan::new(
 }
 
 ///|
-pub fn RatePlan::observation_count(self : RatePlan) -> Int {
+pub fn RatePlan::observation_count(self : RatePlan) -> Int32 {
   self.transmitted.length()
 }
 
 ///|
-pub fn RatePlan::punctured_positions(self : RatePlan) -> Array[Int] {
+pub fn RatePlan::punctured_positions(self : RatePlan) -> Array[Int32] {
   let present = Array::make(self.n, false)
   for v in self.transmitted {
     present[v] = true
@@ -61,7 +61,7 @@ pub fn RatePlan::punctured_positions(self : RatePlan) -> Array[Int] {
   for (v, _) in self.shortened {
     present[v] = true
   }
-  let result : Array[Int] = []
+  let result : Array[Int32] = []
   for v in 0..<self.n {
     if !present[v] {
       result.push(v)
@@ -74,8 +74,8 @@ pub fn RatePlan::punctured_positions(self : RatePlan) -> Array[Int] {
 /// Projection checks the shortening assertion, but does not itself validate H*word.
 pub fn RatePlan::project(
   self : RatePlan,
-  word : Array[Int],
-) -> Array[Int] raise CodeError {
+  word : Array[Int32],
+) -> Array[Int32] raise CodeError {
   ensure_bits(word, self.n)
   for (v, bit) in self.shortened {
     if word[v] != bit {
@@ -91,7 +91,7 @@ pub fn RatePlan::project(
 pub fn RatePlan::restore_llr(
   self : RatePlan,
   observations : Array[Double],
-  limit? : Double = 50.0,
+  limit~ : Double = 50.0,
 ) -> Array[Double] raise CodeError {
   if observations.length() != self.transmitted.length() {
     raise LengthMismatch(self.transmitted.length(), observations.length())
@@ -122,7 +122,7 @@ pub fn RatePlan::restore_llr(
 /// A finite shortening prior is not a hard decoder constraint; verify afterwards.
 pub fn RatePlan::accepts(
   self : RatePlan,
-  word : Array[Int],
+  word : Array[Int32],
 ) -> Bool raise CodeError {
   ensure_bits(word, self.n)
   self.shortened.all(fn(pair) { word[pair.0] == pair.1 })
@@ -136,12 +136,12 @@ pub extend RatePlan with @debug.Debug::{to_repr}
 /// Punctured coordinates remain erased, while shortened coordinates are exact.
 pub fn RatePlan::restore_bec(
   self : RatePlan,
-  observations : Array[Int?],
-) -> Array[Int?] raise CodeError {
+  observations : Array[Int32?],
+) -> Array[Int32?] raise CodeError {
   if observations.length() != self.transmitted.length() {
     raise LengthMismatch(self.transmitted.length(), observations.length())
   }
-  let values : Array[Int?] = Array::make(self.n, None)
+  let values : Array[Int32?] = Array::make(self.n, None)
   for i, observation in observations {
     match observation {
       None => ()

@@ -2,9 +2,9 @@
 /// Dense elimination is deliberately bounded separately from sparse decoding.
 pub struct Encoder {
   priv code : ParityCheck
-  priv reduced : Array[Array[Int]]
-  priv pivots : Array[Int]
-  priv free : Array[Int]
+  priv reduced : Array[Array[Int32]]
+  priv pivots : Array[Int32]
+  priv free : Array[Int32]
 } derive(Debug)
 
 ///|
@@ -21,7 +21,7 @@ pub fn Encoder::new(code : ParityCheck) -> Encoder raise CodeError {
     }
     row
   })
-  let pivots : Array[Int] = []
+  let pivots : Array[Int32] = []
   let mut work = 0L
   let mut pivot_row = 0
   for col in 0..<code.n {
@@ -55,7 +55,7 @@ pub fn Encoder::new(code : ParityCheck) -> Encoder raise CodeError {
       break
     }
   }
-  let free : Array[Int] = []
+  let free : Array[Int32] = []
   let mut p = 0
   for col in 0..<code.n {
     if p < pivots.length() && pivots[p] == col {
@@ -68,22 +68,22 @@ pub fn Encoder::new(code : ParityCheck) -> Encoder raise CodeError {
 }
 
 ///|
-pub fn Encoder::rank(self : Encoder) -> Int {
+pub fn Encoder::rank(self : Encoder) -> Int32 {
   self.pivots.length()
 }
 
 ///|
-pub fn Encoder::dimension(self : Encoder) -> Int {
+pub fn Encoder::dimension(self : Encoder) -> Int32 {
   self.free.length()
 }
 
 ///|
-pub fn Encoder::information_positions(self : Encoder) -> Array[Int] {
+pub fn Encoder::information_positions(self : Encoder) -> Array[Int32] {
   self.free.copy()
 }
 
 ///|
-pub fn Encoder::parity_positions(self : Encoder) -> Array[Int] {
+pub fn Encoder::parity_positions(self : Encoder) -> Array[Int32] {
   self.pivots.copy()
 }
 
@@ -96,8 +96,8 @@ pub fn Encoder::rate(self : Encoder) -> Double {
 /// Free columns carry information; pivot columns are solved from RREF.
 pub fn Encoder::encode(
   self : Encoder,
-  information : Array[Int],
-) -> Array[Int] raise CodeError {
+  information : Array[Int32],
+) -> Array[Int32] raise CodeError {
   ensure_bits(information, self.dimension())
   let word = Array::make(self.code.n, 0)
   for i, v in self.free {
@@ -117,8 +117,8 @@ pub fn Encoder::encode(
 /// Extraction rejects a non-codeword rather than silently accepting corruption.
 pub fn Encoder::extract(
   self : Encoder,
-  word : Array[Int],
-) -> Array[Int] raise CodeError {
+  word : Array[Int32],
+) -> Array[Int32] raise CodeError {
   if !self.code.is_codeword(word) {
     raise Inconsistent("nonzero syndrome")
   }
@@ -126,11 +126,13 @@ pub fn Encoder::extract(
 }
 
 ///|
-pub fn Encoder::generator(self : Encoder) -> Array[Array[Int]] raise CodeError {
+pub fn Encoder::generator(
+  self : Encoder,
+) -> Array[Array[Int32]] raise CodeError {
   if self.dimension() * self.code.n > 1048576 {
     raise ResourceLimit("generator cells")
   }
-  let result : Array[Array[Int]] = []
+  let result : Array[Array[Int32]] = []
   for i in 0..<self.dimension() {
     let unit = Array::make(self.dimension(), 0)
     unit[i] = 1
@@ -144,8 +146,8 @@ pub fn Encoder::generator(self : Encoder) -> Array[Array[Int]] raise CodeError {
 /// This is an algebraic solution, NOT a minimum-weight error estimate.
 pub fn Encoder::solve_syndrome(
   self : Encoder,
-  syndrome : Array[Int],
-) -> Array[Int] raise CodeError {
+  syndrome : Array[Int32],
+) -> Array[Int32] raise CodeError {
   ensure_bits(syndrome, self.code.checks())
   let rows = Array::makei(self.code.checks(), fn(c) {
     let row = Array::make(self.code.n + 1, 0)
@@ -157,7 +159,7 @@ pub fn Encoder::solve_syndrome(
   })
   let mut work = 0L
   let mut rank = 0
-  let pivots : Array[Int] = []
+  let pivots : Array[Int32] = []
   for col in 0..<self.code.n {
     let mut selected = -1
     for r in rank..<rows.length() {

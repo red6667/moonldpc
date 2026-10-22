@@ -5,7 +5,7 @@ test "exact affine recovery versus all 3^7 ternary Hamming observations" {
   let words = Array::makei(16, fn(i) raise { encoder.encode(bits(i, 4)) })
   for pattern in 0..<2187 {
     let mut remaining = pattern
-    let observations : Array[Int?] = []
+    let observations : Array[Int32?] = []
     for _ in 0..<7 {
       let digit = remaining % 3
       remaining /= 3
@@ -80,8 +80,8 @@ test "puncturing equals set projection for all 127 proper Hamming coordinate sub
   let original = @moonldpc.hamming7()
   let encoder = @moonldpc.Encoder::new(original)
   for mask in 0..<127 {
-    let removed : Array[Int] = []
-    let retained : Array[Int] = []
+    let removed : Array[Int32] = []
+    let retained : Array[Int32] = []
     for v in 0..<7 {
       if ((mask >> v) & 1) == 1 {
         removed.push(v)
@@ -90,7 +90,7 @@ test "puncturing equals set projection for all 127 proper Hamming coordinate sub
       }
     }
     let projected = original.puncture(removed)
-    let possible : Array[Array[Int]] = []
+    let possible : Array[Array[Int32]] = []
     for information in 0..<16 {
       let word = encoder.encode(bits(information, 4))
       let shortened = retained.map(fn(v) { word[v] })

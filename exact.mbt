@@ -1,5 +1,5 @@
 ///|
-fn Encoder::enumeration_count(self : Encoder) -> Int raise CodeError {
+fn Encoder::enumeration_count(self : Encoder) -> Int32 raise CodeError {
   let k = self.dimension()
   if k > 16 || self.code.n > 256 {
     raise ResourceLimit("exact decoder: dimension <=16 and length <=256")
@@ -13,10 +13,10 @@ fn Encoder::enumeration_count(self : Encoder) -> Int raise CodeError {
 
 ///|
 pub struct NearestReport {
-  word : Array[Int]?
-  distance : Int
-  ties : Int
-  examined : Int
+  word : Array[Int32]?
+  distance : Int32
+  ties : Int32
+  examined : Int32
 } derive(Debug, ToJson)
 
 ///|
@@ -24,13 +24,13 @@ pub struct NearestReport {
 /// A tied minimum returns no word rather than silently choosing a correction.
 pub fn Encoder::nearest_word(
   self : Encoder,
-  received : Array[Int],
+  received : Array[Int32],
 ) -> NearestReport raise CodeError {
   ensure_bits(received, self.code.n)
   let count = self.enumeration_count()
   let mut best = self.code.n + 1
   let mut ties = 0
-  let mut candidate : Array[Int]? = None
+  let mut candidate : Array[Int32]? = None
   for mask in 0..<count {
     let info = Array::makei(self.dimension(), fn(i) { (mask >> i) & 1 })
     let word = self.encode(info)
@@ -66,10 +66,10 @@ fn log_add(left : Double, right : Double) -> Double {
 
 ///|
 pub struct ExactDecodeReport {
-  word : Array[Int]
+  word : Array[Int32]
   posterior_llr : Array[Double]
-  ties : Int
-  examined : Int
+  ties : Int32
+  examined : Int32
 } derive(Debug, ToJson)
 
 ///|
@@ -79,7 +79,7 @@ pub struct ExactDecodeReport {
 pub fn Encoder::decode_exact(
   self : Encoder,
   llr : Array[Double],
-  limit? : Double = 50.0,
+  limit~ : Double = 50.0,
 ) -> ExactDecodeReport raise CodeError {
   if llr.length() != self.code.n {
     raise LengthMismatch(self.code.n, llr.length())

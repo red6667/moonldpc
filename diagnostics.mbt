@@ -1,7 +1,7 @@
 ///|
 pub struct StoppingReport {
-  variables : Array[Int]
-  singleton_checks : Array[Int]
+  variables : Array[Int32]
+  singleton_checks : Array[Int32]
   is_stopping_set : Bool
 } derive(Debug, ToJson)
 
@@ -10,7 +10,7 @@ pub struct StoppingReport {
 /// The empty set qualifies vacuously; it is not a nontrivial decoding failure.
 pub fn ParityCheck::stopping_set_report(
   self : ParityCheck,
-  variables : Array[Int],
+  variables : Array[Int32],
 ) -> StoppingReport raise CodeError {
   let selected = Array::make(self.n, false)
   for v in variables {
@@ -22,7 +22,7 @@ pub fn ParityCheck::stopping_set_report(
     }
     selected[v] = true
   }
-  let singleton_checks : Array[Int] = []
+  let singleton_checks : Array[Int32] = []
   for c, row in self.rows {
     let mut degree = 0
     for v in row {
@@ -51,9 +51,9 @@ pub extend StoppingReport with ToJson::{to_json}
 
 ///|
 pub struct SingleErrorReport {
-  word : Array[Int]?
-  candidates : Array[Int]
-  syndrome : Array[Int]
+  word : Array[Int32]?
+  candidates : Array[Int32]
+  syndrome : Array[Int32]
   unchanged : Bool
 } derive(Debug, ToJson)
 
@@ -62,10 +62,10 @@ pub struct SingleErrorReport {
 /// a legal result does not certify the assumption. Ambiguous columns are not guessed.
 pub fn ParityCheck::correct_single(
   self : ParityCheck,
-  received : Array[Int],
+  received : Array[Int32],
 ) -> SingleErrorReport raise CodeError {
   let syndrome = self.syndrome(received)
-  let active : Array[Int] = []
+  let active : Array[Int32] = []
   for c, bit in syndrome {
     if bit == 1 {
       active.push(c)
@@ -79,7 +79,7 @@ pub fn ParityCheck::correct_single(
       unchanged: true,
     }
   }
-  let candidates : Array[Int] = []
+  let candidates : Array[Int32] = []
   for v in self.rows[active[0]] {
     if self.columns[v] == active {
       candidates.push(v)

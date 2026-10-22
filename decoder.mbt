@@ -7,7 +7,7 @@ pub(all) enum Algorithm {
 
 ///|
 pub struct DecoderConfig {
-  priv iterations : Int
+  priv iterations : Int32
   priv algorithm : Algorithm
   priv normalization : Double
   priv offset : Double
@@ -19,10 +19,10 @@ pub struct DecoderConfig {
 /// SumProduct ignores normalization/offset, and rejects non-default values.
 pub fn DecoderConfig::new(
   algorithm : Algorithm,
-  iterations? : Int = 50,
-  normalization? : Double = 1.0,
-  offset? : Double = 0.0,
-  llr_limit? : Double = 50.0,
+  iterations~ : Int32 = 50,
+  normalization~ : Double = 1.0,
+  offset~ : Double = 0.0,
+  llr_limit~ : Double = 50.0,
 ) -> DecoderConfig raise CodeError {
   if iterations < 0 || iterations > 10000 {
     raise InvalidNumber("iterations 0..10000")
@@ -44,15 +44,15 @@ pub fn DecoderConfig::new(
 
 ///|
 pub struct DecodeReport {
-  word : Array[Int]
+  word : Array[Int32]
   posterior_llr : Array[Double]
   converged : Bool
-  iterations : Int
-  syndrome_weights : Array[Int]
+  iterations : Int32
+  syndrome_weights : Array[Int32]
 } derive(Debug, ToJson)
 
 ///|
-fn hard_decision(values : Array[Double]) -> Array[Int] {
+fn hard_decision(values : Array[Double]) -> Array[Int32] {
   values.map(fn(x) { if x < 0.0 { 1 } else { 0 } })
 }
 

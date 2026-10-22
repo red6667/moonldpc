@@ -27,7 +27,7 @@ fn required(fields : Map[String, Json], key : String) -> Json raise CodeError {
 }
 
 ///|
-fn json_integer(value : Json) -> Int raise CodeError {
+fn json_integer(value : Json) -> Int32 raise CodeError {
   match value {
     Number(x, ..) => {
       if !finite(x) || x < -1000000.0 || x > 1000000.0 || @math.floor(x) != x {
@@ -61,8 +61,8 @@ fn json_array(value : Json) -> Array[Json] raise CodeError {
 }
 
 ///|
-fn json_ints(value : Json) -> Array[Int] raise CodeError {
-  let result : Array[Int] = []
+fn json_ints(value : Json) -> Array[Int32] raise CodeError {
+  let result : Array[Int32] = []
   for item in json_array(value) {
     result.push(json_integer(item))
   }
@@ -70,8 +70,8 @@ fn json_ints(value : Json) -> Array[Int] raise CodeError {
 }
 
 ///|
-fn json_rows(value : Json) -> Array[Array[Int]] raise CodeError {
-  let result : Array[Array[Int]] = []
+fn json_rows(value : Json) -> Array[Array[Int32]] raise CodeError {
+  let result : Array[Array[Int32]] = []
   let mut count = 0
   for row in json_array(value) {
     let values = json_ints(row)
@@ -184,7 +184,7 @@ pub fn process_json(request : Json) -> Json raise CodeError {
         "graph": graph.to_json(),
         "rank": encoder.rank(),
         "dimension": encoder.dimension(),
-        "girth": code.girth().to_json(),
+        "girth": Json(code.girth()),
       }
     }
     "encode" => {
@@ -193,9 +193,9 @@ pub fn process_json(request : Json) -> Json raise CodeError {
       let word = encoder.encode(json_ints(required(fields, "information")))
       {
         "ok": true,
-        "word": word.to_json(),
-        "information_positions": encoder.information_positions().to_json(),
-        "syndrome": code.syndrome(word).to_json(),
+        "word": Json(word),
+        "information_positions": Json(encoder.information_positions()),
+        "syndrome": Json(code.syndrome(word)),
       }
     }
     "decode" => {
@@ -209,7 +209,7 @@ pub fn process_json(request : Json) -> Json raise CodeError {
     }
     "peel" | "recover" => {
       allowed(fields, ["action", "code", "observations"])
-      let observations : Array[Int?] = []
+      let observations : Array[Int32?] = []
       for value in json_array(required(fields, "observations")) {
         if value is Null {
           observations.push(None)
@@ -279,11 +279,7 @@ pub fn process_json(request : Json) -> Json raise CodeError {
         json_ints(required(fields, "syndrome")),
       )
       let word = encoder.encode(json_ints(required(fields, "information")))
-      {
-        "ok": true,
-        "word": word.to_json(),
-        "syndrome": code.syndrome(word).to_json(),
-      }
+      { "ok": true, "word": Json(word), "syndrome": Json(code.syndrome(word)) }
     }
     "alist" => {
       allowed(fields, ["action", "code"])

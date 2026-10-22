@@ -1,8 +1,8 @@
 ///|
 pub struct ErasureReport {
-  values : Array[Int?]
-  recovered : Int
-  unresolved : Array[Int]
+  values : Array[Int32?]
+  recovered : Int32
+  unresolved : Array[Int32]
   complete : Bool
 } derive(Debug)
 
@@ -11,7 +11,7 @@ pub struct ErasureReport {
 /// A stopping set is returned explicitly. Contradictory known observations raise.
 pub fn ParityCheck::peel(
   self : ParityCheck,
-  observations : Array[Int?],
+  observations : Array[Int32?],
 ) -> ErasureReport raise CodeError {
   if observations.length() != self.n {
     raise LengthMismatch(self.n, observations.length())
@@ -25,7 +25,7 @@ pub fn ParityCheck::peel(
   }
   let unknown = Array::make(self.checks(), 0)
   let parity = Array::make(self.checks(), 0)
-  let queue : Array[Int] = []
+  let queue : Array[Int32] = []
   for c, row in self.rows {
     for v in row {
       match values[v] {
@@ -72,7 +72,7 @@ pub fn ParityCheck::peel(
       }
     }
   }
-  let unresolved : Array[Int] = []
+  let unresolved : Array[Int32] = []
   for v, value in values {
     if value is None {
       unresolved.push(v)
@@ -83,10 +83,10 @@ pub fn ParityCheck::peel(
 
 ///|
 pub struct BitFlipReport {
-  word : Array[Int]
+  word : Array[Int32]
   converged : Bool
-  iterations : Int
-  syndrome_weights : Array[Int]
+  iterations : Int32
+  syndrome_weights : Array[Int32]
 } derive(Debug, ToJson)
 
 ///|
@@ -94,8 +94,8 @@ pub struct BitFlipReport {
 /// A flip requires more unsatisfied than satisfied incident checks; ties do not flip.
 pub fn ParityCheck::bit_flip(
   self : ParityCheck,
-  received : Array[Int],
-  iterations? : Int = 50,
+  received : Array[Int32],
+  iterations~ : Int32 = 50,
 ) -> BitFlipReport raise CodeError {
   ensure_bits(received, self.n)
   if iterations < 0 || iterations > 10000 {
@@ -162,13 +162,13 @@ pub impl ToJson for ErasureReport with fn to_json(self) {
   let values = self.values.map(fn(value) {
     match value {
       None => Json::null()
-      Some(bit) => bit.to_json()
+      Some(bit) => Json(bit)
     }
   })
   {
-    "values": values.to_json(),
+    "values": Json(values),
     "recovered": self.recovered,
-    "unresolved": self.unresolved.to_json(),
+    "unresolved": Json(self.unresolved),
     "complete": self.complete,
   }
 }

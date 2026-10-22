@@ -1,14 +1,14 @@
 ///|
 fn oracle_decode(
-  n : Int,
-  rows : Array[Array[Int]],
+  n : Int32,
+  rows : Array[Array[Int32]],
   channel : Array[Double],
   algorithm : @moonldpc.Algorithm,
-  iterations : Int,
+  iterations : Int32,
   alpha : Double,
   offset : Double,
   expected : Array[Double],
-  history : Array[Int],
+  history : Array[Int32],
 ) -> Unit raise {
   let code = @moonldpc.ParityCheck::new(n, rows)
   let config = @moonldpc.DecoderConfig::new(
@@ -32,14 +32,14 @@ fn oracle_decode(
 
 ///|
 fn oracle_kernel(
-  n : Int,
-  rows : Array[Array[Int]],
-  expected : Array[Int],
+  n : Int32,
+  rows : Array[Array[Int32]],
+  expected : Array[Int32],
 ) -> Unit raise {
   let code = @moonldpc.ParityCheck::new(n, rows)
   let encoder = @moonldpc.Encoder::new(code)
   assert_eq(1 << encoder.dimension(), expected.length())
-  let actual : Array[Int] = []
+  let actual : Array[Int32] = []
   for mask in 0..<(1 << encoder.dimension()) {
     let information = bits(mask, encoder.dimension())
     let word = encoder.encode(information)

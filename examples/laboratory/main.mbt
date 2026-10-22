@@ -25,5 +25,5 @@ fn main raise {
   }
   println("laboratory: calibrated/interleaved extended Hamming frame recovered")
   println(exact.to_json().stringify())
-  println(probabilities.to_json().stringify())
+  println(Json(probabilities).stringify())
 }

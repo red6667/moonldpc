@@ -2,19 +2,19 @@
 /// Owned sparse binary matrix. Each edge is present once; rows are sorted.
 /// Construction is bounded to one million edges and 65536 variables/checks.
 pub struct ParityCheck {
-  priv n : Int
-  priv rows : Array[Array[Int]]
-  priv columns : Array[Array[Int]]
-  priv row_edges : Array[Array[Int]]
-  priv column_edges : Array[Array[Int]]
-  priv edge_variables : Array[Int]
-  priv edge_checks : Array[Int]
+  priv n : Int32
+  priv rows : Array[Array[Int32]]
+  priv columns : Array[Array[Int32]]
+  priv row_edges : Array[Array[Int32]]
+  priv column_edges : Array[Array[Int32]]
+  priv edge_variables : Array[Int32]
+  priv edge_checks : Array[Int32]
 } derive(Debug)
 
 ///|
 pub fn ParityCheck::new(
-  variables : Int,
-  checks : Array[Array[Int]],
+  variables : Int32,
+  checks : Array[Array[Int32]],
 ) -> ParityCheck raise CodeError {
   if variables <= 0 ||
     variables > 65536 ||
@@ -30,14 +30,14 @@ pub fn ParityCheck::new(
     count += row.length()
   }
   let rows = copy_rows(checks)
-  let columns : Array[Array[Int]] = Array::makei(variables, fn(_) { [] })
-  let row_edges : Array[Array[Int]] = []
-  let column_edges : Array[Array[Int]] = Array::makei(variables, fn(_) { [] })
-  let edge_variables : Array[Int] = []
-  let edge_checks : Array[Int] = []
+  let columns : Array[Array[Int32]] = Array::makei(variables, fn(_) { [] })
+  let row_edges : Array[Array[Int32]] = []
+  let column_edges : Array[Array[Int32]] = Array::makei(variables, fn(_) { [] })
+  let edge_variables : Array[Int32] = []
+  let edge_checks : Array[Int32] = []
   for c, row in rows {
     row.sort()
-    let edges : Array[Int] = []
+    let edges : Array[Int32] = []
     let mut previous = -1
     for v in row {
       if v < 0 || v >= variables {
@@ -68,25 +68,25 @@ pub fn ParityCheck::new(
 }
 
 ///|
-pub fn ParityCheck::variables(self : ParityCheck) -> Int {
+pub fn ParityCheck::variables(self : ParityCheck) -> Int32 {
   self.n
 }
 
 ///|
-pub fn ParityCheck::checks(self : ParityCheck) -> Int {
+pub fn ParityCheck::checks(self : ParityCheck) -> Int32 {
   self.rows.length()
 }
 
 ///|
-pub fn ParityCheck::edges(self : ParityCheck) -> Int {
+pub fn ParityCheck::edges(self : ParityCheck) -> Int32 {
   self.edge_variables.length()
 }
 
 ///|
 pub fn ParityCheck::check_variables(
   self : ParityCheck,
-  check : Int,
-) -> Array[Int] raise CodeError {
+  check : Int32,
+) -> Array[Int32] raise CodeError {
   if check < 0 || check >= self.checks() {
     raise InvalidIndex(check, -1)
   }
@@ -96,8 +96,8 @@ pub fn ParityCheck::check_variables(
 ///|
 pub fn ParityCheck::variable_checks(
   self : ParityCheck,
-  variable : Int,
-) -> Array[Int] raise CodeError {
+  variable : Int32,
+) -> Array[Int32] raise CodeError {
   if variable < 0 || variable >= self.n {
     raise InvalidIndex(-1, variable)
   }
@@ -107,8 +107,8 @@ pub fn ParityCheck::variable_checks(
 ///|
 pub fn ParityCheck::syndrome(
   self : ParityCheck,
-  word : Array[Int],
-) -> Array[Int] raise CodeError {
+  word : Array[Int32],
+) -> Array[Int32] raise CodeError {
   ensure_bits(word, self.n)
   self.rows.map(fn(row) {
     let mut parity = 0
@@ -122,13 +122,16 @@ pub fn ParityCheck::syndrome(
 ///|
 pub fn ParityCheck::is_codeword(
   self : ParityCheck,
-  word : Array[Int],
+  word : Array[Int32],
 ) -> Bool raise CodeError {
   self.syndrome(word).all(fn(x) { x == 0 })
 }
 
 ///|
-fn ParityCheck::syndrome_weight(self : ParityCheck, word : Array[Int]) -> Int {
+fn ParityCheck::syndrome_weight(
+  self : ParityCheck,
+  word : Array[Int32],
+) -> Int32 {
   let mut count = 0
   for row in self.rows {
     let mut bit = 0
@@ -144,7 +147,7 @@ fn ParityCheck::syndrome_weight(self : ParityCheck, word : Array[Int]) -> Int {
 /// Reindex columns. permutation[new_index] gives the old index.
 pub fn ParityCheck::permute(
   self : ParityCheck,
-  permutation : Array[Int],
+  permutation : Array[Int32],
 ) -> ParityCheck raise CodeError {
   if permutation.length() != self.n {
     raise LengthMismatch(self.n, permutation.length())
@@ -183,7 +186,7 @@ pub fn ParityCheck::direct_sum(
 
 ///|
 /// Repeat one parity constraint for every adjacent pair (dimension one).
-pub fn repetition_code(length : Int) -> ParityCheck raise CodeError {
+pub fn repetition_code(length : Int32) -> ParityCheck raise CodeError {
   if length < 2 || length > 65536 {
     raise InvalidDimensions("repetition length 2..65536")
   }
@@ -204,8 +207,8 @@ pub extend ParityCheck with @debug.Debug::{to_repr}
 ///|
 pub fn ParityCheck::edge_endpoints(
   self : ParityCheck,
-  edge : Int,
-) -> (Int, Int) raise CodeError {
+  edge : Int32,
+) -> (Int32, Int32) raise CodeError {
   if edge < 0 || edge >= self.edges() {
     raise InvalidIndex(-1, edge)
   }

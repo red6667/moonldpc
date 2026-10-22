@@ -1,18 +1,18 @@
 ///|
 pub suberror CodeError {
   InvalidDimensions(String)
-  InvalidIndex(Int, Int)
-  DuplicateEntry(Int, Int)
-  InvalidBit(Int, Int)
-  LengthMismatch(Int, Int)
+  InvalidIndex(Int32, Int32)
+  DuplicateEntry(Int32, Int32)
+  InvalidBit(Int32, Int32)
+  LengthMismatch(Int32, Int32)
   InvalidNumber(String)
-  InvalidFormat(Int, String)
+  InvalidFormat(Int32, String)
   ResourceLimit(String)
   Inconsistent(String)
 } derive(Debug)
 
 ///|
-fn ensure_bits(bits : Array[Int], expected : Int) -> Unit raise CodeError {
+fn ensure_bits(bits : Array[Int32], expected : Int32) -> Unit raise CodeError {
   if bits.length() != expected {
     raise LengthMismatch(expected, bits.length())
   }
@@ -34,7 +34,7 @@ fn clamp(x : Double, bound : Double) -> Double {
 }
 
 ///|
-fn copy_rows(rows : Array[Array[Int]]) -> Array[Array[Int]] {
+fn copy_rows(rows : Array[Array[Int32]]) -> Array[Array[Int32]] {
   rows.map(fn(row) { row.copy() })
 }
 

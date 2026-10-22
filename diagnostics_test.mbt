@@ -2,8 +2,8 @@
 test "stopping sets agree with exhaustive BEC peeling residuals" {
   let code = @moonldpc.hamming7()
   for mask in 0..<128 {
-    let selected : Array[Int] = []
-    let observation : Array[Int?] = Array::make(7, Some(0))
+    let selected : Array[Int32] = []
+    let observation : Array[Int32?] = Array::make(7, Some(0))
     for v in 0..<7 {
       if ((mask >> v) & 1) == 1 {
         selected.push(v)

@@ -1,13 +1,13 @@
 ///|
 pub struct GraphReport {
-  variables : Int
-  checks : Int
-  edges : Int
-  isolated_variables : Int
-  empty_checks : Int
-  components : Int
-  variable_degrees : Array[Int]
-  check_degrees : Array[Int]
+  variables : Int32
+  checks : Int32
+  edges : Int32
+  isolated_variables : Int32
+  empty_checks : Int32
+  components : Int32
+  variable_degrees : Array[Int32]
+  check_degrees : Array[Int32]
   four_cycles : Int64
 } derive(Debug, ToJson)
 
@@ -22,7 +22,7 @@ pub fn ParityCheck::analyze(self : ParityCheck) -> GraphReport raise CodeError {
       raise ResourceLimit("four-cycle pair budget")
     }
   }
-  let pairs : Map[(Int, Int), Int] = Map([])
+  let pairs : Map[(Int32, Int32), Int32] = Map([])
   let mut four_cycles = 0L
   for column in self.columns {
     for a in 0..<column.length() {
@@ -81,7 +81,7 @@ pub fn ParityCheck::analyze(self : ParityCheck) -> GraphReport raise CodeError {
 ///|
 /// Exact Tanner girth by BFS, limited to 20 million traversed edges.
 /// None means acyclic. Never reports a partial traversal as an exact girth.
-pub fn ParityCheck::girth(self : ParityCheck) -> Int? raise CodeError {
+pub fn ParityCheck::girth(self : ParityCheck) -> Int32? raise CodeError {
   let total = self.n + self.checks()
   if total > 8192 {
     raise ResourceLimit("girth vertices")
@@ -129,10 +129,10 @@ pub fn ParityCheck::girth(self : ParityCheck) -> Int? raise CodeError {
 
 ///|
 pub struct DistanceReport {
-  dimension : Int
-  examined_nonzero_words : Int
-  minimum_distance : Int?
-  weight_distribution : Array[Int]
+  dimension : Int32
+  examined_nonzero_words : Int32
+  minimum_distance : Int32?
+  weight_distribution : Array[Int32]
 } derive(Debug, ToJson)
 
 ///|

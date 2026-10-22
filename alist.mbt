@@ -5,7 +5,7 @@ pub fn parse_alist(text : String) -> ParityCheck raise CodeError {
   if text.length() > 16777216 {
     raise ResourceLimit("alist input characters")
   }
-  let tokens : Array[Int] = []
+  let tokens : Array[Int32] = []
   let mut active = false
   let mut number = 0
   let mut line = 1
@@ -71,10 +71,10 @@ pub fn parse_alist(text : String) -> ParityCheck raise CodeError {
   if column_degrees.fold(init=0, fn(a, b) { a + b }) > 1000000 {
     raise ResourceLimit("alist edges")
   }
-  let rows : Array[Array[Int]] = Array::makei(m, fn(_) { [] })
+  let rows : Array[Array[Int32]] = Array::makei(m, fn(_) { [] })
   let mut cursor = 4 + n + m
   for v in 0..<n {
-    let seen : Map[Int, Bool] = Map([])
+    let seen : Map[Int32, Bool] = Map([])
     for k in 0..<max_column {
       let value = tokens[cursor]
       cursor += 1
@@ -97,7 +97,7 @@ pub fn parse_alist(text : String) -> ParityCheck raise CodeError {
     if code.rows[c].length() != row_degrees[c] {
       raise InvalidFormat(0, "row degree mismatch")
     }
-    let listed : Array[Int] = []
+    let listed : Array[Int32] = []
     for k in 0..<max_row {
       let value = tokens[cursor]
       cursor += 1
@@ -180,8 +180,8 @@ pub fn ParityCheck::to_alist(self : ParityCheck) -> String raise CodeError {
 /// Base cells -1 are zero blocks; 0..lift-1 denote cyclic permutation blocks.
 /// Row r of a block with shift s has its one in column (r+s) mod lift.
 pub fn lift_qc(
-  base : Array[Array[Int]],
-  lift : Int,
+  base : Array[Array[Int32]],
+  lift : Int32,
 ) -> ParityCheck raise CodeError {
   if base.is_empty() || base[0].is_empty() || lift <= 0 || lift > 4096 {
     raise InvalidDimensions("nonempty QC base and lift 1..4096")
@@ -207,10 +207,10 @@ pub fn lift_qc(
   if blocks > 1000000 / lift {
     raise ResourceLimit("QC lifted edges")
   }
-  let rows : Array[Array[Int]] = []
+  let rows : Array[Array[Int32]] = []
   for base_row in base {
     for r in 0..<lift {
-      let row : Array[Int] = []
+      let row : Array[Int32] = []
       for column, shift in base_row {
         if shift >= 0 {
           row.push(column * lift + (r + shift) % lift)

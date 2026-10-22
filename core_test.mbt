@@ -2,7 +2,7 @@
 fn close(
   a : Double,
   b : Double,
-  tolerance? : Double = 0.00000001,
+  tolerance~ : Double = 0.00000001,
 ) -> Unit raise {
   assert_true(
     (a - b).abs() <= tolerance,
@@ -18,7 +18,7 @@ fn[T] rejects(f : () -> T raise @moonldpc.CodeError) -> Unit raise {
 }
 
 ///|
-fn bits(mask : Int, n : Int) -> Array[Int] {
+fn bits(mask : Int32, n : Int32) -> Array[Int32] {
   Array::makei(n, fn(i) { (mask >> i) & 1 })
 }
 
