@@ -1,0 +1,5 @@
+import {
+  "red6667/moonldpc",
+}
+
+pkgtype(kind: "executable")
