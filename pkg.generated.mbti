@@ -1,0 +1,186 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "red6667/moonldpc"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn awgn_llr(Array[Double], Double, limit? : Double) -> Array[Double] raise CodeError
+
+pub fn bec_llr(Array[Int?], limit? : Double) -> Array[Double] raise CodeError
+
+pub fn bpsk(Array[Int]) -> Array[Double] raise CodeError
+
+pub fn bsc_llr(Array[Int], Double, limit? : Double) -> Array[Double] raise CodeError
+
+pub fn execute(String) -> String
+
+pub fn hamming7() -> ParityCheck
+
+pub fn lift_qc(Array[Array[Int]], Int) -> ParityCheck raise CodeError
+
+pub fn parse_alist(String) -> ParityCheck raise CodeError
+
+pub fn process_json(Json) -> Json raise CodeError
+
+pub fn repetition_code(Int) -> ParityCheck raise CodeError
+
+// Errors
+pub suberror CodeError {
+  InvalidDimensions(String)
+  InvalidIndex(Int, Int)
+  DuplicateEntry(Int, Int)
+  InvalidBit(Int, Int)
+  LengthMismatch(Int, Int)
+  InvalidNumber(String)
+  InvalidFormat(Int, String)
+  ResourceLimit(String)
+  Inconsistent(String)
+} derive(@debug.Debug)
+pub fn CodeError::to_repr(Self) -> @debug.Repr
+
+// Types and methods
+pub(all) enum Algorithm {
+  SumProduct
+  MinSum
+  LayeredMinSum
+} derive(Eq, @debug.Debug)
+pub fn Algorithm::equal(Self, Self) -> Bool
+pub fn Algorithm::not_equal(Self, Self) -> Bool
+pub fn Algorithm::to_repr(Self) -> @debug.Repr
+
+pub struct BitFlipReport {
+  word : Array[Int]
+  converged : Bool
+  iterations : Int
+  syndrome_weights : Array[Int]
+} derive(ToJson, @debug.Debug)
+pub fn BitFlipReport::to_json(Self) -> Json
+pub fn BitFlipReport::to_repr(Self) -> @debug.Repr
+
+pub struct DecodeReport {
+  word : Array[Int]
+  posterior_llr : Array[Double]
+  converged : Bool
+  iterations : Int
+  syndrome_weights : Array[Int]
+} derive(ToJson, @debug.Debug)
+pub fn DecodeReport::to_json(Self) -> Json
+pub fn DecodeReport::to_repr(Self) -> @debug.Repr
+
+pub struct DecoderConfig {
+  // private fields
+} derive(@debug.Debug)
+pub fn DecoderConfig::new(Algorithm, iterations? : Int, normalization? : Double, offset? : Double, llr_limit? : Double) -> Self raise CodeError
+pub fn DecoderConfig::to_repr(Self) -> @debug.Repr
+
+pub struct DistanceReport {
+  dimension : Int
+  examined_nonzero_words : Int
+  minimum_distance : Int?
+  weight_distribution : Array[Int]
+} derive(ToJson, @debug.Debug)
+pub fn DistanceReport::to_json(Self) -> Json
+pub fn DistanceReport::to_repr(Self) -> @debug.Repr
+
+pub struct Encoder {
+  // private fields
+} derive(@debug.Debug)
+pub fn Encoder::dimension(Self) -> Int
+pub fn Encoder::distance_report(Self) -> DistanceReport raise CodeError
+pub fn Encoder::encode(Self, Array[Int]) -> Array[Int] raise CodeError
+pub fn Encoder::extract(Self, Array[Int]) -> Array[Int] raise CodeError
+pub fn Encoder::generator(Self) -> Array[Array[Int]] raise CodeError
+pub fn Encoder::information_positions(Self) -> Array[Int]
+pub fn Encoder::new(ParityCheck) -> Self raise CodeError
+pub fn Encoder::parity_positions(Self) -> Array[Int]
+pub fn Encoder::rank(Self) -> Int
+pub fn Encoder::rate(Self) -> Double
+pub fn Encoder::solve_syndrome(Self, Array[Int]) -> Array[Int] raise CodeError
+pub fn Encoder::to_repr(Self) -> @debug.Repr
+
+pub struct ErasureReport {
+  values : Array[Int?]
+  recovered : Int
+  unresolved : Array[Int]
+  complete : Bool
+} derive(@debug.Debug)
+pub fn ErasureReport::to_json(Self) -> Json
+pub fn ErasureReport::to_repr(Self) -> @debug.Repr
+pub impl ToJson for ErasureReport
+
+pub struct ErrorCounts {
+  // private fields
+} derive(ToJson, @debug.Debug)
+pub fn ErrorCounts::bit_error_rate(Self) -> Double?
+pub fn ErrorCounts::frame_error_rate(Self) -> Double?
+pub fn ErrorCounts::new() -> Self
+pub fn ErrorCounts::observe(Self, Array[Int], Array[Int], Bool) -> Self raise CodeError
+pub fn ErrorCounts::to_json(Self) -> Json
+pub fn ErrorCounts::to_repr(Self) -> @debug.Repr
+
+pub struct GraphReport {
+  variables : Int
+  checks : Int
+  edges : Int
+  isolated_variables : Int
+  empty_checks : Int
+  components : Int
+  variable_degrees : Array[Int]
+  check_degrees : Array[Int]
+  four_cycles : Int64
+} derive(ToJson, @debug.Debug)
+pub fn GraphReport::to_json(Self) -> Json
+pub fn GraphReport::to_repr(Self) -> @debug.Repr
+
+pub struct ParityCheck {
+  // private fields
+} derive(@debug.Debug)
+pub fn ParityCheck::analyze(Self) -> GraphReport raise CodeError
+pub fn ParityCheck::bit_flip(Self, Array[Int], iterations? : Int) -> BitFlipReport raise CodeError
+pub fn ParityCheck::check_variables(Self, Int) -> Array[Int] raise CodeError
+pub fn ParityCheck::checks(Self) -> Int
+pub fn ParityCheck::decode(Self, Array[Double], DecoderConfig) -> DecodeReport raise CodeError
+pub fn ParityCheck::direct_sum(Self, Self) -> Self raise CodeError
+pub fn ParityCheck::edge_endpoints(Self, Int) -> (Int, Int) raise CodeError
+pub fn ParityCheck::edges(Self) -> Int
+pub fn ParityCheck::girth(Self) -> Int? raise CodeError
+pub fn ParityCheck::is_codeword(Self, Array[Int]) -> Bool raise CodeError
+pub fn ParityCheck::new(Int, Array[Array[Int]]) -> Self raise CodeError
+pub fn ParityCheck::peel(Self, Array[Int?]) -> ErasureReport raise CodeError
+pub fn ParityCheck::permute(Self, Array[Int]) -> Self raise CodeError
+pub fn ParityCheck::puncture(Self, Array[Int]) -> Self raise CodeError
+pub fn ParityCheck::recover_erasures(Self, Array[Int?]) -> RecoveryReport raise CodeError
+pub fn ParityCheck::syndrome(Self, Array[Int]) -> Array[Int] raise CodeError
+pub fn ParityCheck::to_alist(Self) -> String raise CodeError
+pub fn ParityCheck::to_repr(Self) -> @debug.Repr
+pub fn ParityCheck::variable_checks(Self, Int) -> Array[Int] raise CodeError
+pub fn ParityCheck::variables(Self) -> Int
+
+pub struct RatePlan {
+  // private fields
+} derive(@debug.Debug)
+pub fn RatePlan::accepts(Self, Array[Int]) -> Bool raise CodeError
+pub fn RatePlan::new(Int, Array[Int], shortened? : Array[(Int, Int)]) -> Self raise CodeError
+pub fn RatePlan::observation_count(Self) -> Int
+pub fn RatePlan::project(Self, Array[Int]) -> Array[Int] raise CodeError
+pub fn RatePlan::punctured_positions(Self) -> Array[Int]
+pub fn RatePlan::restore_llr(Self, Array[Double], limit? : Double) -> Array[Double] raise CodeError
+pub fn RatePlan::to_repr(Self) -> @debug.Repr
+
+pub struct RecoveryReport {
+  values : Array[Int?]
+  recovered : Int
+  unresolved : Array[Int]
+  ambiguity_dimension : Int
+  unique : Bool
+  particular_word : Array[Int]
+} derive(@debug.Debug)
+pub fn RecoveryReport::to_json(Self) -> Json
+pub fn RecoveryReport::to_repr(Self) -> @debug.Repr
+pub impl ToJson for RecoveryReport
+
+// Type aliases
+
+// Traits

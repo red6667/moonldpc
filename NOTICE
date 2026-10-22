@@ -1,0 +1,6 @@
+# Notices
+
+MoonLDPC is an original implementation. It depends on `moonbitlang/core`; the
+MoonBit core project is distributed under Apache-2.0. Algorithm behavior was
+checked against public LDPC belief-propagation descriptions; no third-party
+source file, published MoonBit package, or fixture was copied into this tree.

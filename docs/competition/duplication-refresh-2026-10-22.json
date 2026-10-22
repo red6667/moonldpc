@@ -1,0 +1,2157 @@
+{
+  "date": "2026-10-22",
+  "scope": "Public registry summaries, repository search, selected neighboring source/interface/tests, full local registry capability scan. Not an official uniqueness verdict.",
+  "registry_characters_read": 749784,
+  "registry_sections_read": 177,
+  "queries": [
+    {
+      "query": "alist",
+      "source": "moon search --limit 100 --json",
+      "count": 40,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "q2316367743/open-list",
+          "version": "0.1.0"
+        },
+        {
+          "name": "amistozy/prolog",
+          "version": "0.1.7"
+        },
+        {
+          "name": "FlyCloudC/scheme",
+          "version": "0.7.0"
+        },
+        {
+          "name": "justjoheinz/iso-country",
+          "version": "0.1.3"
+        },
+        {
+          "name": "AlexenderSokolov/moonsplit",
+          "version": "0.3.0"
+        },
+        {
+          "name": "pei0331/moon-wit",
+          "version": "0.1.1"
+        },
+        {
+          "name": "code3055/moon_graph",
+          "version": "0.1.0"
+        },
+        {
+          "name": "SyoujyoujiNaiki/chungshan",
+          "version": "0.2.0"
+        },
+        {
+          "name": "hnlyxiaobing/moonbitmark",
+          "version": "0.5.0"
+        },
+        {
+          "name": "azhzx/qbe",
+          "version": "0.32.0"
+        },
+        {
+          "name": "NerdyLee/newcake_ls",
+          "version": "0.1.1"
+        },
+        {
+          "name": "shiheat/find_max",
+          "version": "0.3.0"
+        },
+        {
+          "name": "moonbitstack/moonast",
+          "version": "0.1.1"
+        },
+        {
+          "name": "bobzhang/openseek",
+          "version": "0.3.2"
+        },
+        {
+          "name": "dowdiness/js_engine",
+          "version": "0.9.0"
+        },
+        {
+          "name": "Metalymph/valkey",
+          "version": "0.5.0"
+        },
+        {
+          "name": "vectie/moonclaw",
+          "version": "0.1.6"
+        },
+        {
+          "name": "mizchi/flaker",
+          "version": "0.3.1"
+        },
+        {
+          "name": "bobzhang/faker",
+          "version": "0.1.0"
+        },
+        {
+          "name": "minie135/moon-audit",
+          "version": "0.5.0-dev"
+        },
+        {
+          "name": "bobzhang/loop_invariants_techniques",
+          "version": "0.18.0"
+        },
+        {
+          "name": "001-Elsa/medseal",
+          "version": "0.6.0"
+        },
+        {
+          "name": "Xpeng/linuxpkg",
+          "version": "0.4.0"
+        },
+        {
+          "name": "walkzzz/moon-geometry",
+          "version": "0.231.0"
+        },
+        {
+          "name": "bobzhang/scrut",
+          "version": "0.1.0"
+        },
+        {
+          "name": "daqing/moon-templ",
+          "version": "0.1.0"
+        },
+        {
+          "name": "PerfectPan/agent-finder",
+          "version": "0.1.2"
+        },
+        {
+          "name": "mizchi/converge",
+          "version": "0.2.0"
+        },
+        {
+          "name": "gmlewis/spin-moonbit-sdk",
+          "version": "0.55.4"
+        },
+        {
+          "name": "riantr/pyroduct",
+          "version": "0.1.32"
+        },
+        {
+          "name": "bobzhang/loop_invariants_geometry",
+          "version": "0.13.2"
+        },
+        {
+          "name": "mizchi/crater-browser-helpers",
+          "version": "0.19.0"
+        },
+        {
+          "name": "bobzhang/sexp",
+          "version": "0.1.4"
+        },
+        {
+          "name": "paveg/molt",
+          "version": "0.1.8"
+        },
+        {
+          "name": "moonbitlang/parser",
+          "version": "0.4.6"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1"
+        },
+        {
+          "name": "mizchi/veri",
+          "version": "0.2.0"
+        },
+        {
+          "name": "Ljh684/opencc",
+          "version": "0.1.1"
+        },
+        {
+          "name": "mizchi/kagura_engine",
+          "version": "0.6.0"
+        },
+        {
+          "name": "vitro/engine",
+          "version": "0.8.0"
+        }
+      ]
+    },
+    {
+      "query": "AWGN",
+      "source": "moon search --limit 100 --json",
+      "count": 1,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "lxyhgvb/moonbit-radioframe",
+          "version": "0.2.0"
+        }
+      ]
+    },
+    {
+      "query": "bch",
+      "source": "moon search --limit 100 --json",
+      "count": 0,
+      "limit_reached": false,
+      "modules": []
+    },
+    {
+      "query": "belief_propagation",
+      "source": "moon search --limit 100 --json",
+      "count": 0,
+      "limit_reached": false,
+      "modules": []
+    },
+    {
+      "query": "bit_flip",
+      "source": "moon search --limit 100 --json",
+      "count": 7,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "lxyhgvb/moonbit-radioframe",
+          "version": "0.2.0"
+        },
+        {
+          "name": "Hhsqoo/moon-collections",
+          "version": "0.4.1"
+        },
+        {
+          "name": "bobzhang/loop_invariants_data_structures",
+          "version": "0.12.0"
+        },
+        {
+          "name": "mldong/moon-hutool",
+          "version": "0.1.6"
+        },
+        {
+          "name": "walkzzz/image",
+          "version": "0.5.0"
+        },
+        {
+          "name": "bobzhang/games",
+          "version": "0.9.33"
+        },
+        {
+          "name": "bobzhang/mbtpdf",
+          "version": "0.2.0"
+        }
+      ]
+    },
+    {
+      "query": "channel_coding",
+      "source": "moon search --limit 100 --json",
+      "count": 6,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "eanzhao/pi-moonbit",
+          "version": "0.1.5"
+        },
+        {
+          "name": "bobzhang/openseek",
+          "version": "0.3.2"
+        },
+        {
+          "name": "mizchi/sandbox",
+          "version": "0.1.3"
+        },
+        {
+          "name": "vectie/moonclaw",
+          "version": "0.1.6"
+        },
+        {
+          "name": "gaato/discord-cli",
+          "version": "0.1.8"
+        },
+        {
+          "name": "bobzhang/games",
+          "version": "0.9.33"
+        }
+      ]
+    },
+    {
+      "query": "erasure",
+      "source": "moon search --limit 100 --json",
+      "count": 4,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "oyjh0381/moonerasure",
+          "version": "0.2.0"
+        },
+        {
+          "name": "JJ-ai-nb/moonbit-shard-note",
+          "version": "0.2.1"
+        },
+        {
+          "name": "moonbitstack/moonapi",
+          "version": "0.15.0"
+        },
+        {
+          "name": "XiLaiTL/moobile",
+          "version": "0.6.0"
+        }
+      ]
+    },
+    {
+      "query": "error_correction",
+      "source": "moon search --limit 100 --json",
+      "count": 100,
+      "limit_reached": true,
+      "modules": [
+        {
+          "name": "CAIMEOX/reed_solomon",
+          "version": "0.1.0"
+        },
+        {
+          "name": "2515050242/fiducial_marker",
+          "version": "0.1.1"
+        },
+        {
+          "name": "fan-ere/moon-pdf417-core",
+          "version": "0.2.1"
+        },
+        {
+          "name": "bobzhang/qrc",
+          "version": "0.1.3"
+        },
+        {
+          "name": "PaiGack/moonbitqrcode",
+          "version": "0.1.0"
+        },
+        {
+          "name": "naoto24kawa/moonqr",
+          "version": "0.2.1"
+        },
+        {
+          "name": "TryAndRun-TvT/fast_qr_moonbit",
+          "version": "0.1.2"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1"
+        },
+        {
+          "name": "walkzzz/image",
+          "version": "0.5.0"
+        },
+        {
+          "name": "wjyupl/measure",
+          "version": "0.1.2"
+        },
+        {
+          "name": "Careylq/spell",
+          "version": "0.9.6"
+        },
+        {
+          "name": "cxh04/moon-cv-geometry",
+          "version": "0.1.0"
+        },
+        {
+          "name": "wjcoomk/moonbit-relief",
+          "version": "0.1.0"
+        },
+        {
+          "name": "walkzzz/moon-geometry",
+          "version": "0.231.0"
+        },
+        {
+          "name": "bobzhang/prove",
+          "version": "0.0.3"
+        },
+        {
+          "name": "LMK-ai-nb/tideweave",
+          "version": "0.1.0"
+        },
+        {
+          "name": "riantr/snn_mbt",
+          "version": "0.155.0"
+        },
+        {
+          "name": "riantr/pyroduct",
+          "version": "0.1.32"
+        },
+        {
+          "name": "yyyt0807/moonbitemporal",
+          "version": "0.2.0"
+        },
+        {
+          "name": "moonbit-community/diago",
+          "version": "0.4.0"
+        },
+        {
+          "name": "pla678889/moon-experiment",
+          "version": "0.2.3"
+        },
+        {
+          "name": "bobzhang/games",
+          "version": "0.9.33"
+        },
+        {
+          "name": "Mostan-303/moonbit-cog",
+          "version": "0.2.0"
+        },
+        {
+          "name": "Xu107-hhh/moonbit-jsonschema",
+          "version": "0.1.0"
+        },
+        {
+          "name": "bobzhang/html_parser",
+          "version": "0.2.0"
+        },
+        {
+          "name": "totto2727/x",
+          "version": "0.7.0"
+        },
+        {
+          "name": "pangbit/moonpulsar",
+          "version": "0.1.1"
+        },
+        {
+          "name": "moonbit-community/postgres",
+          "version": "0.1.3"
+        },
+        {
+          "name": "moonbitstack/moonyaml",
+          "version": "0.1.1"
+        },
+        {
+          "name": "Lfan-ke/moonrpc",
+          "version": "0.10.1"
+        },
+        {
+          "name": "colmugx/sqlite-vec",
+          "version": "0.2.4"
+        },
+        {
+          "name": "Hosi121/mysql",
+          "version": "0.3.0"
+        },
+        {
+          "name": "Bemly/cstdio-ffi",
+          "version": "0.1.0"
+        },
+        {
+          "name": "moonbit-community/proton_cdp",
+          "version": "0.5.1"
+        },
+        {
+          "name": "bobzhang/h11",
+          "version": "0.1.1"
+        },
+        {
+          "name": "sa2360/moonnats",
+          "version": "0.1.1"
+        },
+        {
+          "name": "moonbitlang/openseek_tools",
+          "version": "0.3.0"
+        },
+        {
+          "name": "gaato/http",
+          "version": "0.5.0"
+        },
+        {
+          "name": "moonbitstack/moontls",
+          "version": "0.9.0"
+        },
+        {
+          "name": "wflixu/Orion",
+          "version": "0.2.0"
+        },
+        {
+          "name": "liuhuo23/clickhouse-driver",
+          "version": "0.4.0"
+        },
+        {
+          "name": "prowk/binschema",
+          "version": "0.3.1"
+        },
+        {
+          "name": "moonbit-community/rg",
+          "version": "0.2.0"
+        },
+        {
+          "name": "dowdiness/event-graph-walker",
+          "version": "0.8.0"
+        },
+        {
+          "name": "Luna-Flow/type_theory",
+          "version": "0.4.0"
+        },
+        {
+          "name": "bobzhang/crescent",
+          "version": "0.11.1"
+        },
+        {
+          "name": "ChenJiasen-123/mb-secure-stream",
+          "version": "0.2.0"
+        },
+        {
+          "name": "Ag108/MoonCache",
+          "version": "0.2.0"
+        },
+        {
+          "name": "zhanshishan/jsonmend",
+          "version": "0.8.1"
+        },
+        {
+          "name": "soehi/edgeflow",
+          "version": "0.1.4"
+        },
+        {
+          "name": "SundayT1998/milvus-client",
+          "version": "0.1.1"
+        },
+        {
+          "name": "jdjjttr/montecarlo",
+          "version": "0.1.0"
+        },
+        {
+          "name": "prowk/mooncql",
+          "version": "0.2.0"
+        },
+        {
+          "name": "Mr-Shi123/moonjupyter",
+          "version": "0.3.0"
+        },
+        {
+          "name": "hongweifei/lua",
+          "version": "0.1.0"
+        },
+        {
+          "name": "peter-jerry-ye/codex",
+          "version": "0.129.0"
+        },
+        {
+          "name": "colmugx/mcp",
+          "version": "0.18.1"
+        },
+        {
+          "name": "colmugx/acp",
+          "version": "0.3.0"
+        },
+        {
+          "name": "gmlewis/spin-moonbit-sdk",
+          "version": "0.55.4"
+        },
+        {
+          "name": "moonbitstack/moonrpc",
+          "version": "0.20.1"
+        },
+        {
+          "name": "marianoguerra/wax",
+          "version": "0.3.1"
+        },
+        {
+          "name": "hnlyxiaobing/crescent",
+          "version": "0.10.7"
+        },
+        {
+          "name": "yugonlian/moon-avro",
+          "version": "0.3.0"
+        },
+        {
+          "name": "Han-Wentao/mooncontract",
+          "version": "0.1.1"
+        },
+        {
+          "name": "ubugeeei/vapor_moon",
+          "version": "0.1.1"
+        },
+        {
+          "name": "001-Elsa/medseal",
+          "version": "0.6.0"
+        },
+        {
+          "name": "ZSeanYves/MoonbitHTTP",
+          "version": "0.7.0"
+        },
+        {
+          "name": "bobzhang/typify",
+          "version": "0.2.0"
+        },
+        {
+          "name": "RabitLogic/s7",
+          "version": "0.2.6"
+        },
+        {
+          "name": "moonbit-community/codex",
+          "version": "0.151.0"
+        },
+        {
+          "name": "dtzrttp/moonbit-rtl",
+          "version": "0.2.5"
+        },
+        {
+          "name": "codeworm96/magpiedb",
+          "version": "0.2.0"
+        },
+        {
+          "name": "Camilotk/stuntmaster",
+          "version": "0.2.4"
+        },
+        {
+          "name": "longhuanlin/multipart-stream",
+          "version": "0.1.1"
+        },
+        {
+          "name": "daqing/moon-xmpp",
+          "version": "0.12.0"
+        },
+        {
+          "name": "GuoXBQ-Q/moon-boofuzz",
+          "version": "0.1.3"
+        },
+        {
+          "name": "lin2077-zeming/moonecho",
+          "version": "0.1.3"
+        },
+        {
+          "name": "cxh04/kubemoon",
+          "version": "0.1.1"
+        },
+        {
+          "name": "Zcxssxx/moonmq",
+          "version": "0.1.0"
+        },
+        {
+          "name": "Zongzuixi114514/moonmarc",
+          "version": "0.1.0"
+        },
+        {
+          "name": "Ryan-1125/moonfcgi",
+          "version": "0.2.0"
+        },
+        {
+          "name": "Milky2018/wasmoon_runtime",
+          "version": "0.17.1"
+        },
+        {
+          "name": "moonbitlang/async",
+          "version": "0.22.5"
+        },
+        {
+          "name": "mizchi/npm_typed",
+          "version": "0.1.18"
+        },
+        {
+          "name": "mizchi/luna",
+          "version": "0.25.2"
+        },
+        {
+          "name": "mizchi/js_web",
+          "version": "0.13.1"
+        },
+        {
+          "name": "mizchi/js_builtin",
+          "version": "0.13.0"
+        },
+        {
+          "name": "mizchi/js_node",
+          "version": "0.13.0"
+        },
+        {
+          "name": "gaato/discord",
+          "version": "0.13.0"
+        },
+        {
+          "name": "Milky2018/wasmoon",
+          "version": "0.17.1"
+        },
+        {
+          "name": "brickfrog/moontrace",
+          "version": "0.14.0"
+        },
+        {
+          "name": "Allianaab2m/aya",
+          "version": "0.3.0"
+        },
+        {
+          "name": "connect0459/starlark",
+          "version": "0.5.3"
+        },
+        {
+          "name": "Kaida-Amethyst/moondbg",
+          "version": "0.3.1"
+        },
+        {
+          "name": "Zongzuixi114514/mooncollections",
+          "version": "0.1.5"
+        },
+        {
+          "name": "ZSeanYves/doc_parser",
+          "version": "0.1.1"
+        },
+        {
+          "name": "ChaonanShen/moonbit-mqtt-broker",
+          "version": "0.4.0"
+        },
+        {
+          "name": "poteto0/endor",
+          "version": "0.8.0"
+        },
+        {
+          "name": "Ag108/MoonReduce",
+          "version": "0.2.0"
+        },
+        {
+          "name": "lfbnntr/moonbit-fish-stock",
+          "version": "0.1.2"
+        }
+      ]
+    },
+    {
+      "query": "fec",
+      "source": "moon search --limit 100 --json",
+      "count": 2,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "moonbit-community/NyaCSV",
+          "version": "0.3.4"
+        },
+        {
+          "name": "xunyoyo/NyaCSV",
+          "version": "0.3.3"
+        }
+      ]
+    },
+    {
+      "query": "ldpc language:MoonBit",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "\"low-density\" MoonBit",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "\"belief propagation\" language:MoonBit",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "Tanner language:MoonBit",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "\"min-sum\" MoonBit",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "\"error correcting\" language:MoonBit",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "moonldpc",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "\"sparse parity\" MoonBit",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "ldpc MoonBit in:readme",
+      "source": "GitHub repository search per_page=100",
+      "count": 1,
+      "incomplete_results": false,
+      "repositories": [
+        "Across2005/yimai-prophecy-moonbit"
+      ]
+    },
+    {
+      "query": "\"belief propagation\" MoonBit in:readme",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "\"min-sum\" MoonBit in:readme",
+      "source": "GitHub repository search per_page=100",
+      "count": 1,
+      "incomplete_results": false,
+      "repositories": [
+        "amistozy/arturo"
+      ]
+    },
+    {
+      "query": "\"parity-check\" language:MoonBit",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "\"alist\" language:MoonBit",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "\"SumProduct\" MoonBit",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "moonbit hackathon ldpc",
+      "source": "GitHub repository search per_page=100",
+      "count": 0,
+      "incomplete_results": false,
+      "repositories": []
+    },
+    {
+      "query": "moonbit 纠错",
+      "source": "GitHub repository search per_page=100",
+      "count": 1,
+      "incomplete_results": false,
+      "repositories": [
+        "qjgqjg/MoonRules"
+      ]
+    },
+    {
+      "query": "hamming",
+      "source": "moon search --limit 100 --json",
+      "count": 10,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "hiroyannnn/strsim",
+          "version": "0.2.1"
+        },
+        {
+          "name": "Myytsjj/moonbit-feature-forge",
+          "version": "0.2.1"
+        },
+        {
+          "name": "lcyllp/moonbit-nlse-ssfm",
+          "version": "0.1.0"
+        },
+        {
+          "name": "bobzhang/loop_invariants_techniques",
+          "version": "0.18.0"
+        },
+        {
+          "name": "amor2025/moonNum",
+          "version": "0.1.0"
+        },
+        {
+          "name": "bobzhang/prove",
+          "version": "0.0.3"
+        },
+        {
+          "name": "didiLjf/moon-record-linkage",
+          "version": "0.1.5"
+        },
+        {
+          "name": "hwlxmm/dsp",
+          "version": "0.1.0"
+        },
+        {
+          "name": "Hjyyutr/moon-minhash",
+          "version": "0.1.0"
+        },
+        {
+          "name": "hnriiuu/moonbit_forceplate",
+          "version": "0.1.1"
+        }
+      ]
+    },
+    {
+      "query": "ldpc",
+      "source": "moon search --limit 100 --json",
+      "count": 0,
+      "limit_reached": false,
+      "modules": []
+    },
+    {
+      "query": "low-density",
+      "source": "moon search --limit 100 --json",
+      "count": 6,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "CAIMEOX/symbit",
+          "version": "0.5.10"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1"
+        },
+        {
+          "name": "Zjyyer/moonbit-klt-tracker",
+          "version": "0.1.4"
+        },
+        {
+          "name": "hwlxmm/dsp",
+          "version": "0.1.0"
+        },
+        {
+          "name": "walkzzz/moon-geometry",
+          "version": "0.231.0"
+        },
+        {
+          "name": "hnriiuu/moonbit_forceplate",
+          "version": "0.1.1"
+        }
+      ]
+    },
+    {
+      "query": "min-sum",
+      "source": "moon search --limit 100 --json",
+      "count": 44,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "bobzhang/loop_invariants_data_structures",
+          "version": "0.12.0"
+        },
+        {
+          "name": "bobzhang/loop_invariants_graph",
+          "version": "0.18.0"
+        },
+        {
+          "name": "bobzhang/loop_invariants_techniques",
+          "version": "0.18.0"
+        },
+        {
+          "name": "Suquster/moonbit-pathfinding",
+          "version": "0.2.0"
+        },
+        {
+          "name": "Gym-789/moonquantilekit",
+          "version": "0.2.0"
+        },
+        {
+          "name": "bobzhang/prove",
+          "version": "0.0.3"
+        },
+        {
+          "name": "haol-05/moondatalog",
+          "version": "0.1.1"
+        },
+        {
+          "name": "sundaysebasidian-byte/moon-loglens",
+          "version": "0.2.0"
+        },
+        {
+          "name": "hnriiuu/moonbit_forceplate",
+          "version": "0.1.1"
+        },
+        {
+          "name": "code3055/moonpocket",
+          "version": "0.1.0"
+        },
+        {
+          "name": "OldPigxjk/moon_toolkit",
+          "version": "0.1.2"
+        },
+        {
+          "name": "caassien/moonbio",
+          "version": "0.1.2"
+        },
+        {
+          "name": "mizchi/simd",
+          "version": "0.6.1"
+        },
+        {
+          "name": "bobzhang/loop_invariants_dp",
+          "version": "0.15.0"
+        },
+        {
+          "name": "bobzhang/loop_invariants_verified",
+          "version": "0.9.0"
+        },
+        {
+          "name": "manabeai/ac-library-mbt",
+          "version": "0.1.0"
+        },
+        {
+          "name": "bobzhang/hol_light",
+          "version": "0.1.0"
+        },
+        {
+          "name": "moonrockz/partiql-eval",
+          "version": "0.3.0"
+        },
+        {
+          "name": "walkzzz/image",
+          "version": "0.5.0"
+        },
+        {
+          "name": "bobzhang/loop_invariants_math",
+          "version": "0.17.0"
+        },
+        {
+          "name": "walkzzz/moon-geometry",
+          "version": "0.231.0"
+        },
+        {
+          "name": "moonbitlang/core",
+          "version": "0.1.20261022+093cb8f9c"
+        },
+        {
+          "name": "paveg/molt",
+          "version": "0.1.8"
+        },
+        {
+          "name": "hnlyxiaobing/MBOpenClacky",
+          "version": "0.3.1"
+        },
+        {
+          "name": "wqbcs/moon_collections",
+          "version": "0.2.4"
+        },
+        {
+          "name": "hrwqe/cf_ocean",
+          "version": "0.1.4"
+        },
+        {
+          "name": "lhw153766-ctrl/sparse-linalg",
+          "version": "0.1.3"
+        },
+        {
+          "name": "yhsrtty/moon-distinct-sketch",
+          "version": "0.2.1"
+        },
+        {
+          "name": "moonbit-community/verified",
+          "version": "0.0.3"
+        },
+        {
+          "name": "bobzhang/loop_invariants_geometry",
+          "version": "0.13.2"
+        },
+        {
+          "name": "bobzhang/loop_invariants_persistent",
+          "version": "0.8.2"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1"
+        },
+        {
+          "name": "ky678/renky",
+          "version": "0.1.3"
+        },
+        {
+          "name": "mizchi/veri",
+          "version": "0.2.0"
+        },
+        {
+          "name": "lwmvr/moonbit-fixedincome",
+          "version": "0.2.1"
+        },
+        {
+          "name": "mizchi/npm_typed",
+          "version": "0.1.18"
+        },
+        {
+          "name": "bobzhang/openseek",
+          "version": "0.3.2"
+        },
+        {
+          "name": "wzzc-dev/moui",
+          "version": "0.2.4"
+        },
+        {
+          "name": "2d5rrr333/moonform",
+          "version": "0.9.3"
+        },
+        {
+          "name": "amor2025/moonNum",
+          "version": "0.1.0"
+        },
+        {
+          "name": "gmlewis/ray-tracer",
+          "version": "0.10.44"
+        },
+        {
+          "name": "lin2077-zeming/moonecho",
+          "version": "0.1.3"
+        },
+        {
+          "name": "Mostan-303/moonbit-cog",
+          "version": "0.2.0"
+        },
+        {
+          "name": "bobzhang/differential",
+          "version": "0.1.0"
+        }
+      ]
+    },
+    {
+      "query": "parity",
+      "source": "moon search --limit 100 --json",
+      "count": 42,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "zhangbowen2006/moonbit-target-parity",
+          "version": "0.5.1"
+        },
+        {
+          "name": "JJ-ai-nb/moonbit-shard-note",
+          "version": "0.2.1"
+        },
+        {
+          "name": "oyjh0381/moonerasure",
+          "version": "0.2.0"
+        },
+        {
+          "name": "vitro/engine",
+          "version": "0.8.0"
+        },
+        {
+          "name": "fan-ere/moon-pdf417-core",
+          "version": "0.2.1"
+        },
+        {
+          "name": "Milky2018/moon_wgsl_naga",
+          "version": "0.17.3"
+        },
+        {
+          "name": "vectie/moonfish",
+          "version": "0.1.0"
+        },
+        {
+          "name": "Milky2018/moon_swash",
+          "version": "0.1.14"
+        },
+        {
+          "name": "Milky2018/moon_accesskit",
+          "version": "0.4.2"
+        },
+        {
+          "name": "moonbitlang/mbtexcel",
+          "version": "0.3.1"
+        },
+        {
+          "name": "Milky2018/moon_cpal",
+          "version": "0.11.8"
+        },
+        {
+          "name": "bobzhang/mbtexcel",
+          "version": "0.1.9"
+        },
+        {
+          "name": "moonbit-community/moon_cpal",
+          "version": "0.11.8"
+        },
+        {
+          "name": "Milky2018/moon_wgsl_naga_oil",
+          "version": "0.17.3"
+        },
+        {
+          "name": "CAIMEOX/symbit",
+          "version": "0.5.10"
+        },
+        {
+          "name": "brickfrog/pippa",
+          "version": "0.1.0"
+        },
+        {
+          "name": "123123213weqw/moon_pyversion",
+          "version": "0.4.1"
+        },
+        {
+          "name": "AlexenderSokolov/moonportcheck",
+          "version": "0.3.0"
+        },
+        {
+          "name": "moonbit-community/graphviz",
+          "version": "0.1.10"
+        },
+        {
+          "name": "Milky2018/moon_rapier",
+          "version": "0.5.2"
+        },
+        {
+          "name": "bobzhang/beautiful_mermaid",
+          "version": "0.2.0"
+        },
+        {
+          "name": "bobzhang/loop_invariants_math",
+          "version": "0.17.0"
+        },
+        {
+          "name": "bikallem/freetype",
+          "version": "0.5.3"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1"
+        },
+        {
+          "name": "sbqrre/moonbit-mcu-hal",
+          "version": "0.2.1"
+        },
+        {
+          "name": "XiLaiTL/skillpress",
+          "version": "0.1.2"
+        },
+        {
+          "name": "mizchi/veri",
+          "version": "0.2.0"
+        },
+        {
+          "name": "wzzc-dev/moui_theme",
+          "version": "0.2.2"
+        },
+        {
+          "name": "naokikawamoto16/grpc",
+          "version": "0.1.0"
+        },
+        {
+          "name": "weopqrst/tally",
+          "version": "0.8.1"
+        },
+        {
+          "name": "ky678/renky",
+          "version": "0.1.3"
+        },
+        {
+          "name": "CXREN/moonocr",
+          "version": "0.1.0"
+        },
+        {
+          "name": "enanandesu/mp3",
+          "version": "0.1.0"
+        },
+        {
+          "name": "XiLaiTL/moobile",
+          "version": "0.6.0"
+        },
+        {
+          "name": "NBB2006/harborcheck",
+          "version": "0.1.2"
+        },
+        {
+          "name": "MuVirus/moonfig",
+          "version": "0.1.0"
+        },
+        {
+          "name": "xiguaAp6y3/moon-httpsig",
+          "version": "0.1.1"
+        },
+        {
+          "name": "Duckweed/moon-proof",
+          "version": "0.1.3"
+        },
+        {
+          "name": "zxwrrg/tradedocs",
+          "version": "0.1.0"
+        },
+        {
+          "name": "bobzhang/bap",
+          "version": "0.4.0"
+        },
+        {
+          "name": "hnlyxiaobing/MBOpenClacky",
+          "version": "0.3.1"
+        },
+        {
+          "name": "walkzzz/image",
+          "version": "0.5.0"
+        }
+      ]
+    },
+    {
+      "query": "polar",
+      "source": "moon search --limit 100 --json",
+      "count": 24,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "smallbearrr/pandas",
+          "version": "0.7.1"
+        },
+        {
+          "name": "ihb2032/MoonFrame",
+          "version": "0.7.0"
+        },
+        {
+          "name": "Zh666-lab/moonsuncalc",
+          "version": "0.1.0"
+        },
+        {
+          "name": "zc222er/thinfilm_tmm",
+          "version": "0.1.2"
+        },
+        {
+          "name": "wyhjjkk/photonics",
+          "version": "0.1.0"
+        },
+        {
+          "name": "Milky2018/moon_elk",
+          "version": "0.3.2"
+        },
+        {
+          "name": "bobzhang/games",
+          "version": "0.9.33"
+        },
+        {
+          "name": "bikallem/freetype",
+          "version": "0.5.3"
+        },
+        {
+          "name": "bobzhang/loop_invariants_geometry",
+          "version": "0.13.2"
+        },
+        {
+          "name": "LING71671/moon-egui",
+          "version": "0.6.0"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1"
+        },
+        {
+          "name": "ky678/renky",
+          "version": "0.1.3"
+        },
+        {
+          "name": "walkzzz/moon-geometry",
+          "version": "0.231.0"
+        },
+        {
+          "name": "ChrisTu117/moongeodesy",
+          "version": "0.1.1"
+        },
+        {
+          "name": "moonbit-community/elk",
+          "version": "0.4.0"
+        },
+        {
+          "name": "CAIMEOX/symbit",
+          "version": "0.5.10"
+        },
+        {
+          "name": "IvanAXu/BioSeqs",
+          "version": "0.1.9"
+        },
+        {
+          "name": "walkzzz/image",
+          "version": "0.5.0"
+        },
+        {
+          "name": "lcyllp/moonbit-nlse-ssfm",
+          "version": "0.1.0"
+        },
+        {
+          "name": "kokic/pythagoras",
+          "version": "0.1.0"
+        },
+        {
+          "name": "bobzhang/pollapp",
+          "version": "0.3.4"
+        },
+        {
+          "name": "bobzhang/loop_invariants_techniques",
+          "version": "0.18.0"
+        },
+        {
+          "name": "bobzhang/loop_invariants_math",
+          "version": "0.17.0"
+        },
+        {
+          "name": "hnlyxiaobing/MBOpenClacky",
+          "version": "0.3.1"
+        }
+      ]
+    },
+    {
+      "query": "qc-ldpc",
+      "source": "moon search --limit 100 --json",
+      "count": 0,
+      "limit_reached": false,
+      "modules": []
+    },
+    {
+      "query": "recoder",
+      "source": "moon search --limit 100 --json",
+      "count": 96,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "mldong/moon-file-storage-recorder-file",
+          "version": "0.1.1"
+        },
+        {
+          "name": "JJ-ai-nb/moonbit-shard-note",
+          "version": "0.2.1"
+        },
+        {
+          "name": "black-duck666/moontxnkit",
+          "version": "0.4.0"
+        },
+        {
+          "name": "Sxy11112/moonjournalkit",
+          "version": "0.2.0"
+        },
+        {
+          "name": "icyaaaww/moonguard",
+          "version": "0.1.1"
+        },
+        {
+          "name": "oyjh0381/moonerasure",
+          "version": "0.2.0"
+        },
+        {
+          "name": "mhh12345678/injuryrisk",
+          "version": "0.2.0"
+        },
+        {
+          "name": "123123213weqw/moon_taskforge",
+          "version": "0.10.0"
+        },
+        {
+          "name": "zhzh12345678/hrvkit",
+          "version": "0.3.0"
+        },
+        {
+          "name": "Strangelight-Merser/moon-mqtt-client",
+          "version": "0.7.1"
+        },
+        {
+          "name": "mldong/moon-file-storage",
+          "version": "0.1.1"
+        },
+        {
+          "name": "yyqdbngt/moon_snapvault",
+          "version": "0.2.0"
+        },
+        {
+          "name": "btlqql/moon_tracelens",
+          "version": "0.4.1"
+        },
+        {
+          "name": "Nanaloveyuki/vellum",
+          "version": "0.3.0"
+        },
+        {
+          "name": "moonbitstack/moonquic",
+          "version": "0.3.3"
+        },
+        {
+          "name": "btlqql/moon_json_repair",
+          "version": "0.2.0"
+        },
+        {
+          "name": "kupas/pm3",
+          "version": "0.1.7"
+        },
+        {
+          "name": "liying-han/moonresilience",
+          "version": "0.2.0"
+        },
+        {
+          "name": "marianoguerra/shrubbery",
+          "version": "0.1.2"
+        },
+        {
+          "name": "moonbitstack/moonzero",
+          "version": "0.13.0"
+        },
+        {
+          "name": "moonrockz/gleam-parser",
+          "version": "0.5.1"
+        },
+        {
+          "name": "moonrockz/smithy-syntax",
+          "version": "0.5.0"
+        },
+        {
+          "name": "moonrockz/partiql-syntax",
+          "version": "0.3.0"
+        },
+        {
+          "name": "ZJH-666-ZJH/moonrecoder",
+          "version": "0.1.1"
+        },
+        {
+          "name": "Duckweed/moon-mqtt",
+          "version": "0.3.0"
+        },
+        {
+          "name": "moonbit-community/html",
+          "version": "0.2.2"
+        },
+        {
+          "name": "marianoguerra/wax",
+          "version": "0.3.1"
+        },
+        {
+          "name": "Kaida-Amethyst/readline",
+          "version": "0.1.2"
+        },
+        {
+          "name": "Metalymph/valkey",
+          "version": "0.5.0"
+        },
+        {
+          "name": "Lfan-ke/moonzero",
+          "version": "0.7.3"
+        },
+        {
+          "name": "i5ting/readdirp",
+          "version": "0.1.3"
+        },
+        {
+          "name": "dtzrttp/moonbit-rtl",
+          "version": "0.2.5"
+        },
+        {
+          "name": "1726914517-spec/moon_otp",
+          "version": "0.3.1"
+        },
+        {
+          "name": "lyyjavastudy/moonbit-counterpoint",
+          "version": "0.3.2"
+        },
+        {
+          "name": "KKKIIO/selene_xaml",
+          "version": "0.37.5"
+        },
+        {
+          "name": "jingmo653/sshconfig-resolve",
+          "version": "0.1.0"
+        },
+        {
+          "name": "yyyt0807/external-sort",
+          "version": "0.1.0"
+        },
+        {
+          "name": "tlhuecdkoyg/MoonCDC",
+          "version": "0.1.0"
+        },
+        {
+          "name": "ShiChengxu/moonappend",
+          "version": "0.2.0"
+        },
+        {
+          "name": "PingGuoMiaoMiao/moonlsm",
+          "version": "0.2.0"
+        },
+        {
+          "name": "code3055/moonpocket",
+          "version": "0.1.0"
+        },
+        {
+          "name": "dowdiness/event-graph-walker",
+          "version": "0.8.0"
+        },
+        {
+          "name": "marianoguerra/mcp-server",
+          "version": "0.10.1"
+        },
+        {
+          "name": "marianoguerra/html",
+          "version": "0.1.1"
+        },
+        {
+          "name": "Lfan-ke/raft-moonbit",
+          "version": "0.5.2"
+        },
+        {
+          "name": "Rz-coder8848/moon-fsm",
+          "version": "0.3.0"
+        },
+        {
+          "name": "ywz1314/sessionlog",
+          "version": "0.2.4"
+        },
+        {
+          "name": "zhaoyuanjuns/moonbit_extractor",
+          "version": "0.1.2"
+        },
+        {
+          "name": "wskwsk68/membrane",
+          "version": "0.2.2"
+        },
+        {
+          "name": "moonrockz/wac",
+          "version": "0.3.0"
+        },
+        {
+          "name": "sgy1023-crt/cassowary",
+          "version": "0.2.1"
+        },
+        {
+          "name": "usagi-star/mooncap",
+          "version": "0.1.0"
+        },
+        {
+          "name": "vectie/lunanexa",
+          "version": "0.1.0"
+        },
+        {
+          "name": "vectie/moonflow",
+          "version": "0.1.2"
+        },
+        {
+          "name": "DDD12345-D/moon-amqp",
+          "version": "0.1.0"
+        },
+        {
+          "name": "mik1e80/cad_sketch",
+          "version": "0.2.1"
+        },
+        {
+          "name": "moonbit-community/graphviz",
+          "version": "0.1.10"
+        },
+        {
+          "name": "bobzhang/html_parser",
+          "version": "0.2.0"
+        },
+        {
+          "name": "mizchi/experimental_crypto",
+          "version": "0.0.2"
+        },
+        {
+          "name": "bobzhang/openseek",
+          "version": "0.3.2"
+        },
+        {
+          "name": "wzzc-dev/moui",
+          "version": "0.2.4"
+        },
+        {
+          "name": "trkbt10/vcdb",
+          "version": "0.3.2"
+        },
+        {
+          "name": "marianoguerra/tutuca",
+          "version": "0.57.1"
+        },
+        {
+          "name": "moonbitlang/openseek",
+          "version": "0.7.3"
+        },
+        {
+          "name": "bobzhang/bap",
+          "version": "0.4.0"
+        },
+        {
+          "name": "vectie/moonclaw",
+          "version": "0.1.6"
+        },
+        {
+          "name": "Lfan-ke/mooncat",
+          "version": "0.8.1"
+        },
+        {
+          "name": "ZSeanYves/markitdown",
+          "version": "0.5.3"
+        },
+        {
+          "name": "ZSeanYves/MoonbitHTTP",
+          "version": "0.7.0"
+        },
+        {
+          "name": "weopqrst/mooncassette",
+          "version": "0.10.0"
+        },
+        {
+          "name": "Suquster/moonbit-pathfinding",
+          "version": "0.2.0"
+        },
+        {
+          "name": "MaoDingA/moonpost",
+          "version": "0.2.1"
+        },
+        {
+          "name": "XiLaiTL/moobile",
+          "version": "0.6.0"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1"
+        },
+        {
+          "name": "oyjh0381/moonmime",
+          "version": "0.3.1"
+        },
+        {
+          "name": "i5ting/gulp",
+          "version": "0.1.0"
+        },
+        {
+          "name": "ChaonanShen/moonbit-mqtt-broker",
+          "version": "0.4.0"
+        },
+        {
+          "name": "poteto0/endor",
+          "version": "0.8.0"
+        },
+        {
+          "name": "Ag108/MoonCache",
+          "version": "0.2.0"
+        },
+        {
+          "name": "Zjyyer/moonbit-klt-tracker",
+          "version": "0.1.4"
+        },
+        {
+          "name": "fuyun-2026/moonbit-canbus",
+          "version": "0.2.4"
+        },
+        {
+          "name": "hwlxmm/dsp",
+          "version": "0.1.0"
+        },
+        {
+          "name": "GuoXBQ-Q/moon-boofuzz",
+          "version": "0.1.3"
+        },
+        {
+          "name": "sbqrre/moonbit-mcu-hal",
+          "version": "0.2.1"
+        },
+        {
+          "name": "moonrockz/wit",
+          "version": "0.3.0"
+        },
+        {
+          "name": "vectie/moonrobo",
+          "version": "0.1.1"
+        },
+        {
+          "name": "vectie/moontown",
+          "version": "0.1.6"
+        },
+        {
+          "name": "moonbit-community/rtc",
+          "version": "0.0.1"
+        },
+        {
+          "name": "vectie/mooncast",
+          "version": "0.2.3"
+        },
+        {
+          "name": "lllg123/mooncontext",
+          "version": "0.2.0"
+        },
+        {
+          "name": "binhongcha/moonsuccinct",
+          "version": "0.1.0"
+        },
+        {
+          "name": "hzc-666-ai/moonseis",
+          "version": "0.1.0"
+        },
+        {
+          "name": "vectie/moonfind",
+          "version": "0.1.0"
+        },
+        {
+          "name": "WEICZ20/moonbit-computer-interlocking",
+          "version": "0.1.0"
+        },
+        {
+          "name": "Zongzuixi114514/moonmarc",
+          "version": "0.1.0"
+        },
+        {
+          "name": "eisem/mooninput",
+          "version": "0.1.0"
+        }
+      ]
+    },
+    {
+      "query": "reed_solomon",
+      "source": "moon search --limit 100 --json",
+      "count": 9,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "CAIMEOX/reed_solomon",
+          "version": "0.1.0"
+        },
+        {
+          "name": "oyjh0381/moonerasure",
+          "version": "0.2.0"
+        },
+        {
+          "name": "fan-ere/moon-pdf417-core",
+          "version": "0.2.1"
+        },
+        {
+          "name": "JJ-ai-nb/moonbit-shard-note",
+          "version": "0.2.1"
+        },
+        {
+          "name": "bobzhang/qrc",
+          "version": "0.1.3"
+        },
+        {
+          "name": "PaiGack/moonbitqrcode",
+          "version": "0.1.0"
+        },
+        {
+          "name": "naoto24kawa/moonqr",
+          "version": "0.2.1"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1"
+        },
+        {
+          "name": "walkzzz/image",
+          "version": "0.5.0"
+        }
+      ]
+    },
+    {
+      "query": "decode_llr",
+      "source": "moon search --limit 100 --json",
+      "count": 0,
+      "limit_reached": false,
+      "modules": []
+    },
+    {
+      "query": "LDPC_decoder",
+      "source": "moon search --limit 100 --json",
+      "count": 0,
+      "limit_reached": false,
+      "modules": []
+    },
+    {
+      "query": "minsum",
+      "source": "moon search --limit 100 --json",
+      "count": 1,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "bobzhang/differential",
+          "version": "0.1.0"
+        }
+      ]
+    },
+    {
+      "query": "parity-check",
+      "source": "moon search --limit 100 --json",
+      "count": 26,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "mizchi/veri",
+          "version": "0.2.0"
+        },
+        {
+          "name": "brickfrog/pippa",
+          "version": "0.1.0"
+        },
+        {
+          "name": "XiLaiTL/skillpress",
+          "version": "0.1.2"
+        },
+        {
+          "name": "JJ-ai-nb/moonbit-shard-note",
+          "version": "0.2.1"
+        },
+        {
+          "name": "oyjh0381/moonerasure",
+          "version": "0.2.0"
+        },
+        {
+          "name": "AlexenderSokolov/moonportcheck",
+          "version": "0.3.0"
+        },
+        {
+          "name": "vitro/engine",
+          "version": "0.8.0"
+        },
+        {
+          "name": "vectie/moonfish",
+          "version": "0.1.0"
+        },
+        {
+          "name": "123123213weqw/moon_pyversion",
+          "version": "0.4.1"
+        },
+        {
+          "name": "Milky2018/moon_rapier",
+          "version": "0.5.2"
+        },
+        {
+          "name": "bobzhang/mbtexcel",
+          "version": "0.1.9"
+        },
+        {
+          "name": "CAIMEOX/symbit",
+          "version": "0.5.10"
+        },
+        {
+          "name": "moonbit-community/graphviz",
+          "version": "0.1.10"
+        },
+        {
+          "name": "bikallem/freetype",
+          "version": "0.5.3"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1"
+        },
+        {
+          "name": "sbqrre/moonbit-mcu-hal",
+          "version": "0.2.1"
+        },
+        {
+          "name": "bobzhang/loop_invariants_math",
+          "version": "0.17.0"
+        },
+        {
+          "name": "wzzc-dev/moui_theme",
+          "version": "0.2.2"
+        },
+        {
+          "name": "zxwrrg/tradedocs",
+          "version": "0.1.0"
+        },
+        {
+          "name": "weopqrst/tally",
+          "version": "0.8.1"
+        },
+        {
+          "name": "ky678/renky",
+          "version": "0.1.3"
+        },
+        {
+          "name": "NBB2006/harborcheck",
+          "version": "0.1.2"
+        },
+        {
+          "name": "Duckweed/moon-proof",
+          "version": "0.1.3"
+        },
+        {
+          "name": "bobzhang/bap",
+          "version": "0.4.0"
+        },
+        {
+          "name": "hnlyxiaobing/MBOpenClacky",
+          "version": "0.3.1"
+        },
+        {
+          "name": "walkzzz/image",
+          "version": "0.5.0"
+        }
+      ]
+    },
+    {
+      "query": "SumProduct",
+      "source": "moon search --limit 100 --json",
+      "count": 1,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "bobzhang/prove",
+          "version": "0.0.3"
+        }
+      ]
+    },
+    {
+      "query": "校验矩阵",
+      "source": "moon search --limit 100 --json",
+      "count": 2,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "amor2025/moonNum",
+          "version": "0.1.0"
+        },
+        {
+          "name": "ZSeanYves/doc_parser",
+          "version": "0.1.1"
+        }
+      ]
+    },
+    {
+      "query": "置信传播",
+      "source": "moon search --limit 100 --json",
+      "count": 0,
+      "limit_reached": false,
+      "modules": []
+    },
+    {
+      "query": "软判决",
+      "source": "moon search --limit 100 --json",
+      "count": 0,
+      "limit_reached": false,
+      "modules": []
+    },
+    {
+      "query": "sum-product",
+      "source": "moon search --limit 100 --json",
+      "count": 24,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "bobzhang/prove",
+          "version": "0.0.3"
+        },
+        {
+          "name": "tonyyuyiding/asdl",
+          "version": "0.1.0"
+        },
+        {
+          "name": "ky678/renky",
+          "version": "0.1.3"
+        },
+        {
+          "name": "mizchi/simd",
+          "version": "0.6.1"
+        },
+        {
+          "name": "moonbitlang/quickcheck",
+          "version": "0.15.0"
+        },
+        {
+          "name": "Freon793/moonopt",
+          "version": "0.3.0"
+        },
+        {
+          "name": "bobzhang/loop_invariants_math",
+          "version": "0.17.0"
+        },
+        {
+          "name": "dgmxjj/moonbit-posterkit",
+          "version": "0.1.4"
+        },
+        {
+          "name": "Lyllyl789/aurum",
+          "version": "0.1.1"
+        },
+        {
+          "name": "moonbit-community/verified",
+          "version": "0.0.3"
+        },
+        {
+          "name": "CAIMEOX/symbit",
+          "version": "0.5.10"
+        },
+        {
+          "name": "ihb2032/MoonFrame",
+          "version": "0.7.0"
+        },
+        {
+          "name": "bobzhang/loop_invariants_geometry",
+          "version": "0.13.2"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1"
+        },
+        {
+          "name": "pla678889/moon-experiment",
+          "version": "0.2.3"
+        },
+        {
+          "name": "hwlxmm/dsp",
+          "version": "0.1.0"
+        },
+        {
+          "name": "manabeai/ac-library-mbt",
+          "version": "0.1.0"
+        },
+        {
+          "name": "bobzhang/hol_light",
+          "version": "0.1.0"
+        },
+        {
+          "name": "walkzzz/moon-geometry",
+          "version": "0.231.0"
+        },
+        {
+          "name": "bobzhang/loop_invariants_techniques",
+          "version": "0.18.0"
+        },
+        {
+          "name": "moonbit-community/opentelemetry",
+          "version": "0.1.8"
+        },
+        {
+          "name": "moonbitstack/moonapi",
+          "version": "0.15.0"
+        },
+        {
+          "name": "bobzhang/loop_invariants_graph",
+          "version": "0.18.0"
+        },
+        {
+          "name": "mizchi/veri",
+          "version": "0.2.0"
+        }
+      ]
+    },
+    {
+      "query": "tanner",
+      "source": "moon search --limit 100 --json",
+      "count": 1,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "gmlewis/fonts-t",
+          "version": "0.19.19"
+        }
+      ]
+    },
+    {
+      "query": "纠错",
+      "source": "moon search --limit 100 --json",
+      "count": 4,
+      "limit_reached": false,
+      "modules": [
+        {
+          "name": "PaiGack/moonbitqrcode",
+          "version": "0.1.0"
+        },
+        {
+          "name": "naoto24kawa/moonqr",
+          "version": "0.2.1"
+        },
+        {
+          "name": "TryAndRun-TvT/fast_qr_moonbit",
+          "version": "0.1.2"
+        },
+        {
+          "name": "walkzzz/image",
+          "version": "0.5.0"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "error correction reached the 100-result cap",
+    "Repository search is not authenticated code search",
+    "awesome-moonbit raw transport reset; official repository README later fetched through public API",
+    "hwlxmm/dsp guessed repository returned 404; actual hwlxmm/moonbit-dsp from manifest was inspected",
+    "No private or unindexed/unpublished projects covered"
+  ]
+}

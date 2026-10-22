@@ -1,0 +1,6 @@
+import {
+  "red6667/moonldpc",
+  "moonbitlang/core/env",
+}
+
+pkgtype(kind: "executable")
