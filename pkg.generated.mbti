@@ -183,6 +183,15 @@ pub fn ParityCheck::to_repr(Self) -> @debug.Repr
 pub fn ParityCheck::variable_checks(Self, Int) -> Array[Int] raise CodeError
 pub fn ParityCheck::variables(Self) -> Int
 
+pub struct Permutation {
+  // private fields
+} derive(@debug.Debug)
+pub fn[T] Permutation::apply(Self, Array[T]) -> Array[T] raise CodeError
+pub fn Permutation::inverse(Self) -> Self
+pub fn Permutation::new(Array[Int]) -> Self raise CodeError
+pub fn Permutation::then(Self, Self) -> Self raise CodeError
+pub fn Permutation::to_repr(Self) -> @debug.Repr
+
 pub struct RatePlan {
   // private fields
 } derive(@debug.Debug)
