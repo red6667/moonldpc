@@ -176,6 +176,7 @@ pub fn ParityCheck::peel(Self, Array[Int?]) -> ErasureReport raise CodeError
 pub fn ParityCheck::permute(Self, Array[Int]) -> Self raise CodeError
 pub fn ParityCheck::puncture(Self, Array[Int]) -> Self raise CodeError
 pub fn ParityCheck::recover_erasures(Self, Array[Int?]) -> RecoveryReport raise CodeError
+pub fn ParityCheck::stopping_set_report(Self, Array[Int]) -> StoppingReport raise CodeError
 pub fn ParityCheck::syndrome(Self, Array[Int]) -> Array[Int] raise CodeError
 pub fn ParityCheck::to_alist(Self) -> String raise CodeError
 pub fn ParityCheck::to_dense(Self) -> Array[Array[Int]] raise CodeError
@@ -215,6 +216,14 @@ pub struct RecoveryReport {
 pub fn RecoveryReport::to_json(Self) -> Json
 pub fn RecoveryReport::to_repr(Self) -> @debug.Repr
 pub impl ToJson for RecoveryReport
+
+pub struct StoppingReport {
+  variables : Array[Int]
+  singleton_checks : Array[Int]
+  is_stopping_set : Bool
+} derive(ToJson, @debug.Debug)
+pub fn StoppingReport::to_json(Self) -> Json
+pub fn StoppingReport::to_repr(Self) -> @debug.Repr
 
 // Type aliases
 
