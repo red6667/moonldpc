@@ -39,3 +39,23 @@ test "dual orthogonality and bidual membership exhaustively" {
   let zero = @moonldpc.ParityCheck::new(2, [[0], [1]])
   assert_eq(@moonldpc.Encoder::new(zero.dual()).dimension(), 2)
 }
+
+///|
+test "Hamming overall parity extension has distance four" {
+  let code = @moonldpc.hamming7()
+  let extended = code.extend_even_parity()
+  let enc = @moonldpc.Encoder::new(extended)
+  assert_eq(enc.dimension(), 4)
+  assert_eq(enc.distance_report().minimum_distance, Some(4))
+  let original = @moonldpc.Encoder::new(code)
+  for mask in 0..<16 {
+    let word = original.encode(bits(mask, 4))
+    let mut parity = 0
+    for bit in word {
+      parity = parity ^ bit
+    }
+    word.push(parity)
+    assert_true(extended.is_codeword(word))
+  }
+  rejects(() => @moonldpc.ParityCheck::new(65536, [[]]).extend_even_parity())
+}

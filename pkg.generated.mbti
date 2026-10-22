@@ -158,6 +158,7 @@ pub fn ParityCheck::direct_sum(Self, Self) -> Self raise CodeError
 pub fn ParityCheck::dual(Self) -> Self raise CodeError
 pub fn ParityCheck::edge_endpoints(Self, Int) -> (Int, Int) raise CodeError
 pub fn ParityCheck::edges(Self) -> Int
+pub fn ParityCheck::extend_even_parity(Self) -> Self raise CodeError
 pub fn ParityCheck::from_dense(Array[Array[Int]]) -> Self raise CodeError
 pub fn ParityCheck::girth(Self) -> Int? raise CodeError
 pub fn ParityCheck::is_codeword(Self, Array[Int]) -> Bool raise CodeError

@@ -18,3 +18,16 @@ pub fn ParityCheck::dual(self : ParityCheck) -> ParityCheck raise CodeError {
   }
   ParityCheck::new(self.n, rows)
 }
+
+///|
+/// Append one overall even parity coordinate. Existing columns keep their indices.
+pub fn ParityCheck::extend_even_parity(
+  self : ParityCheck,
+) -> ParityCheck raise CodeError {
+  if self.n >= 65536 {
+    raise ResourceLimit("extended parity variable count")
+  }
+  let rows = copy_rows(self.rows)
+  rows.push(Array::makei(self.n + 1, fn(i) { i }))
+  ParityCheck::new(self.n + 1, rows)
+}
