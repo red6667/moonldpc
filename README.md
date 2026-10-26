@@ -1,13 +1,15 @@
 # MoonLDPC
 
-MoonLDPC 是 MoonBit 二进制稀疏校验矩阵、GF(2) 编码、软判决译码和擦除恢复库。模块版本为 `red6667/moonldpc@0.1.0`，MIT 许可。适合接收端/仿真工具、码设计互操作工具、遥测/协议服务复用同一核心；不提供 Wi-Fi、5G、DVB 标准 profile、随机信道仿真、密码学保证或生产吞吐量承诺。
+MoonLDPC 是 MoonBit 二进制稀疏校验矩阵、GF(2) 编码、软判决译码和擦除恢复库。模块版本为 `red6667/moonldpc@0.2.0`，MIT 许可。适合接收端/仿真工具、码设计互操作工具、遥测/协议服务复用同一核心；0.2.0 新增 IEEE 802.11 LDPC 的 n=1944、rate=3/4 单一 FEC profile；不提供完整 Wi-Fi PHY、5G/DVB profile、随机信道仿真、密码学保证或生产吞吐量承诺。
+
+标准兼容证据见 [IEEE 802.11 对比与复跑说明](docs/wifi-compatibility.md)。下述安装命令固定使用包含新增 Wi-Fi API 的 0.2.0 版本。
 
 ## 安装与环境
 
 从 MoonCakes 安装精确版本：
 
 ```sh
-moon add red6667/moonldpc@0.1.0
+moon add red6667/moonldpc@0.2.0
 ```
 
 在消费者 `moon.pkg` 中添加 `import { "red6667/moonldpc" }`。本仓库本地使用 Moon 0.1.20261021、Moonc 0.10.17；CI 使用官方稳定工具链并记录实际版本。支持 wasm-gc、wasm、js 和 native；Windows 本地未安装 C 编译器，native 的 build/test/run 须看云端证据。
@@ -18,6 +20,7 @@ moon add red6667/moonldpc@0.1.0
 
 ## 能力范围
 
+- `WifiLdpc1944R34`：固定 IEEE 802.11 LDPC n=1944、k=1458、z=81，前 k 位系统信息；7 组参考码字逐位对照，附录示例 shortening/puncturing 验证。
 - `ParityCheck`：拥有式稀疏二进制 Tanner 图，综合、码字验证、置换、direct sum、dense 互操作、Hamming(7,4) 和重复码。
 - `Encoder`：受限 GF(2) RREF、秩/自由信息位置、编码/提取、综合方程特解、小码距枚举；`CosetEncoder` 支持 Hx=s 的仿射编码。另有对偶码和整体偶校验扩展。
 - 三种迭代软译码：Sum-Product、Flooding Min-Sum、Layered Min-Sum。合法码字收敛不证明原始发送内容已恢复。
@@ -42,19 +45,22 @@ let information = encoder.extract(decoded.word)
 
 这些 API 可能抛出 CodeError；调用函数需要声明 raise 或显式 catch。LLR 为 log(P0/P1)，正值偏向 0，零硬判为 0。行/列索引从零开始；重复边、越界索引、非二值输入、NaN/Infinity 不是合法输入。
 
-## 四个可运行工作流
+## 五个可运行工作流
 
 ```sh
 moon run examples/receiver
 moon run examples/designer
 moon run examples/telemetry
 moon run examples/laboratory
+moon run examples/wifi
 ```
 
 1. **接收端/仿真开发者**：矩阵和解调 LLR → 三种迭代译码 → 候选码字、综合历史、后验和误码统计。receiver 实跑自定义 42-bit QC 帧。
 2. **码设计工具作者**：QC base matrix → lift、alist 导出/导入 → 邻接、环、秩、小码距和投影结果，供其他工具链接入。
 3. **遥测服务作者**：重复/穿孔观测和 BEC 擦除 → RatePlan、peeling/精确恢复 → 结构化唯一/多解/错误结果。
 4. **接收校准与诊断工具**：扩展 Hamming 码、重排观测和逐样本方差 → 对齐 LLR → 精确 ML/MAP 对照与比特概率。
+
+5. **通信 FEC 互操作**：固定 Wi-Fi LDPC 系统编码 → 六处弱错误 LLR → 软译码 → 完整码字和原始信息核对。标准参考向量在测试中逐位比对，示例只展示调用。
 
 ## JSON CLI
 
@@ -67,12 +73,12 @@ PowerShell 的原生命令引号转义可能不同；可运行 `python scripts/s
 
 ## 关键边界
 
-- 稀疏图最多 65,536 个变量/校验与 1,000,000 条边；稠密消元另限尺寸、单元数和工作量。详见 [安全边界](SECURITY.md)。
+- 稀疏图最多 65,541 个变量/校验与 1,000,000 条边；稠密消元另限尺寸、单元数和工作量。详见 [安全边界](SECURITY.md)。
 - 精确小码译码长度不超过 256、维度不超过 16，且 n*(k+1)*2^k <= 20,000,000。不是大图生产译码器。
 - `correct_single` 只在单错误假设下返回唯一列匹配；多错误可能形成另一个合法码字。最近码字并列不猜，精确软译码并列按信息掩码顺序选首项并报告 ties。
 - `recover_erasures` 的 particular_word 不证明唯一；检查 unique、ambiguity_dimension。`peel` 不猜 stopping set。
 - `RatePlan` 只合并独立观测；相关观测重复使用会导致过度置信。有限 LLR shortening 必须在译码后用 accepts 检查；BEC 重复观测冲突会报错。
-- 不声称兼容某个无线标准、通过第三方认证、比某个实现更快或项目绝对唯一。
+- 标准兼容性仅限文档列出的 IEEE 802.11 单一 FEC profile 和实测用例；不声称完整无线标准支持、第三方认证、速度领先或项目绝对唯一。
 
 ## 验证
 
@@ -82,6 +88,7 @@ moon fmt --check
 moon check --deny-warn
 moon test --deny-warn
 moon build --deny-warn
+python scripts/check_wifi.py
 python scripts/generate_oracles.py --check
 python scripts/test_audit_history.py
 python scripts/audit_local.py
@@ -89,10 +96,10 @@ python scripts/audit_history.py
 python scripts/smoke.py --target wasm-gc
 ```
 
-当前 36 个 MoonBit 测试；独立 Python fixture 有 144 个迭代译码案例、40 个 GF(2) 案例、20 个精确边缘案例。新增测试穷举 Hamming 单错误、双对偶、仿射综合、置换和 stopping sets，并独立核对概率乘积枚举与 log-domain 后验。CI 对 wasm-gc、wasm、js、native 分别执行检查、测试、构建和真实工作流。工程 ledger 记录 20 个已逐项复核的真实切片，不将后续格式/修复提交自动计入门槛。
+当前 41 个 MoonBit 测试；独立 Python fixture 有 144 个迭代译码案例、40 个 GF(2) 案例、20 个精确边缘案例。新增测试穷举 Hamming 单错误、双对偶、仿射综合、置换和 stopping sets，并独立核对概率乘积枚举与 log-domain 后验。CI 配置覆盖 wasm-gc、wasm、js、native 的检查、测试、构建和真实工作流；本次修订尚未推送，不能据此认领远端运行通过。工程 ledger 记录 20 个已逐项复核的真实切片，不将后续格式/修复提交自动计入门槛。
 
 [架构与数值约定](docs/architecture.md) · [查重范围和近邻](docs/competition/duplicate-check.md) · [提交审计 ledger](docs/competition/engineering-slices.json) · [变更记录](CHANGELOG.md)
 
 ## 许可与参考
 
-原创实现，未复制近邻项目代码或测试夹具。MoonBit core 依赖与参考边界见 [NOTICE](NOTICE)，许可见 [MIT LICENSE](LICENSE)，AI 辅助开发披露见 [AI-USE.md](AI-USE.md)。本库没有网络发布或报名功能；私有申报材料不属于源码/包。
+通用算法和固定 profile 编码逻辑为独立实现；新增标准数值矩阵与参考测试向量取自固定版本的 MIT 开源项目，保留来源与许可，详见 [兼容性说明](docs/wifi-compatibility.md)。MoonBit core 依赖与参考边界见 [NOTICE](NOTICE)，许可见 [MIT LICENSE](LICENSE)，AI 辅助开发披露见 [AI-USE.md](AI-USE.md)。本库没有网络发布或报名功能；私有申报材料不属于源码/包。

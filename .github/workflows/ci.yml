@@ -30,6 +30,7 @@ jobs:
       - run: moon check --target ${{ matrix.target }} --deny-warn
       - run: moon test --target ${{ matrix.target }} --deny-warn
       - run: moon build --target ${{ matrix.target }} --deny-warn
+      - run: python3 scripts/check_wifi.py
       - run: python3 scripts/generate_oracles.py --check
       - run: python3 scripts/test_oracle_reproducibility.py
       - run: python3 scripts/test_audit_history.py

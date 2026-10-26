@@ -1,6 +1,20 @@
 # Notices
 
-MoonLDPC is an original implementation. It depends on `moonbitlang/core`; the
-MoonBit core project is distributed under Apache-2.0. Algorithm behavior was
-checked against public LDPC belief-propagation descriptions; no third-party
-source file, published MoonBit package, or fixture was copied into this tree.
+MoonLDPC's general algorithms and MoonBit implementation are original.
+It depends on moonbitlang/core, distributed under Apache-2.0.
+
+The IEEE 802.11 n=1944 rate=3/4 numeric base matrix and numerical reference
+vectors are taken from ishmal/ldpc802-js at revision
+ e4a0042a2e0884304ba306163d7df00c291667f1 (MIT, Copyright (c) 2016 Bob Jamison).
+The matrix is independently cross-checked with tavildar/LDPC at revision
+ 05ee7f4af36ed5dacf52861315af68b8a17e71e0 (MIT).
+Full upstream copyright and permission notices are retained in
+ docs/licenses/ldpc802-js-MIT.txt and docs/licenses/tavildar-LDPC-MIT.txt.
+The source file manifest and SHA-256 hashes are in
+ tests/fixtures/wifi1944-r34.json; validation details and scope are in
+ docs/wifi-compatibility.md. Upstream runtime implementations are not bundled.
+
+The Annex G numerical vector is an upstream transcription attributed to
+IEEE 802.11-2016 Tables G.36-G.38. The original IEEE publication was not
+independently obtained. This project does not claim IEEE certification,
+endorsement, complete standard compliance, or a complete Wi-Fi PHY.

@@ -6,7 +6,7 @@ import subprocess
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--target", choices=["wasm-gc", "wasm", "js", "native"], default="wasm-gc")
 args = parser.parse_args()
-for name in ["receiver", "designer", "telemetry", "laboratory"]:
+for name in ["receiver", "designer", "telemetry", "laboratory", "wifi"]:
     subprocess.run(["moon", "run", "--target", args.target, "examples/"+name], check=True)
 for extra_args in [[], ["{}", "{}"]]:
     usage = subprocess.run(["moon", "run", "--target", args.target, "cmd/main", "--"] + extra_args,

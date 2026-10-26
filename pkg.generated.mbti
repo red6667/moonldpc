@@ -255,6 +255,15 @@ pub struct StoppingReport {
 pub fn StoppingReport::to_json(Self) -> Json
 pub fn StoppingReport::to_repr(Self) -> @debug.Repr
 
+pub struct WifiLdpc1944R34 {
+  // private fields
+} derive(@debug.Debug)
+pub fn WifiLdpc1944R34::encode(Self, Array[Int32]) -> Array[Int32] raise CodeError
+pub fn WifiLdpc1944R34::extract(Self, Array[Int32]) -> Array[Int32] raise CodeError
+pub fn WifiLdpc1944R34::new() -> Self raise CodeError
+pub fn WifiLdpc1944R34::parity_check(Self) -> ParityCheck
+pub fn WifiLdpc1944R34::to_repr(Self) -> @debug.Repr
+
 // Type aliases
 
 // Traits
